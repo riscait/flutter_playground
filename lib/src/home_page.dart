@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'cutom_video_player/video_player_page.dart';
 import 'list_and_fade_bar/list_and_fade_bar.dart';
+import 'localization/localization.dart';
 
 class HomePage extends HookWidget {
   HomePage({
@@ -17,7 +18,7 @@ class HomePage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SliverAppBar'),
+        title: Text(Localized.of(context).homePageTitle),
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -35,13 +36,13 @@ class HomePage extends HookWidget {
             delegate: SliverChildListDelegate.fixed(
               [
                 ListTile(
-                  title: Text('List And Fade Bar'),
+                  title: Text(Localized.of(context).listAndFadeBar),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => ListAndFadeBar()),
                   ),
                 ),
                 ListTile(
-                  title: Text('Custom Video Player'),
+                  title: Text(Localized.of(context).customVideoPlayer),
                   onTap: () => navigateToPage(const VideoPlayerPage()),
                 ),
               ],
