@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'cutom_video_player/video_player_page.dart';
 import 'list_and_fade_bar/list_and_fade_bar.dart';
 import 'localization/localization.dart';
+import 'stretchable_half_modal/stretchable_half_modal.dart';
 
 class HomePage extends HookWidget {
   HomePage({
@@ -44,6 +45,10 @@ class HomePage extends HookWidget {
                 ListTile(
                   title: Text(Localized.of(context).customVideoPlayer),
                   onTap: () => navigateToPage(const VideoPlayerPage()),
+                ),
+                ListTile(
+                  title: Text(Localized.of(context).strechableHalfModal),
+                  onTap: () => navigateToPage(const StretchableHalfModal()),
                 ),
               ],
             ),

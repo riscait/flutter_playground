@@ -20,12 +20,14 @@ class _$MessageTearOff {
       {required String appName,
       required String homePageTitle,
       required String listAndFadeBar,
-      required String customVideoPlayer}) {
+      required String customVideoPlayer,
+      required String strechableHalfModal}) {
     return _Message(
       appName: appName,
       homePageTitle: homePageTitle,
       listAndFadeBar: listAndFadeBar,
       customVideoPlayer: customVideoPlayer,
+      strechableHalfModal: strechableHalfModal,
     );
   }
 }
@@ -39,6 +41,7 @@ mixin _$Message {
   String get homePageTitle => throw _privateConstructorUsedError;
   String get listAndFadeBar => throw _privateConstructorUsedError;
   String get customVideoPlayer => throw _privateConstructorUsedError;
+  String get strechableHalfModal => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -52,7 +55,8 @@ abstract class $MessageCopyWith<$Res> {
       {String appName,
       String homePageTitle,
       String listAndFadeBar,
-      String customVideoPlayer});
+      String customVideoPlayer,
+      String strechableHalfModal});
 }
 
 /// @nodoc
@@ -69,6 +73,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? homePageTitle = freezed,
     Object? listAndFadeBar = freezed,
     Object? customVideoPlayer = freezed,
+    Object? strechableHalfModal = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -87,6 +92,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.customVideoPlayer
           : customVideoPlayer // ignore: cast_nullable_to_non_nullable
               as String,
+      strechableHalfModal: strechableHalfModal == freezed
+          ? _value.strechableHalfModal
+          : strechableHalfModal // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -100,7 +109,8 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       {String appName,
       String homePageTitle,
       String listAndFadeBar,
-      String customVideoPlayer});
+      String customVideoPlayer,
+      String strechableHalfModal});
 }
 
 /// @nodoc
@@ -118,6 +128,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? homePageTitle = freezed,
     Object? listAndFadeBar = freezed,
     Object? customVideoPlayer = freezed,
+    Object? strechableHalfModal = freezed,
   }) {
     return _then(_Message(
       appName: appName == freezed
@@ -136,6 +147,10 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.customVideoPlayer
           : customVideoPlayer // ignore: cast_nullable_to_non_nullable
               as String,
+      strechableHalfModal: strechableHalfModal == freezed
+          ? _value.strechableHalfModal
+          : strechableHalfModal // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -146,7 +161,8 @@ class _$_Message implements _Message {
       {required this.appName,
       required this.homePageTitle,
       required this.listAndFadeBar,
-      required this.customVideoPlayer});
+      required this.customVideoPlayer,
+      required this.strechableHalfModal});
 
   @override
   final String appName;
@@ -156,10 +172,12 @@ class _$_Message implements _Message {
   final String listAndFadeBar;
   @override
   final String customVideoPlayer;
+  @override
+  final String strechableHalfModal;
 
   @override
   String toString() {
-    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer)';
+    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal)';
   }
 
   @override
@@ -177,7 +195,10 @@ class _$_Message implements _Message {
                     .equals(other.listAndFadeBar, listAndFadeBar)) &&
             (identical(other.customVideoPlayer, customVideoPlayer) ||
                 const DeepCollectionEquality()
-                    .equals(other.customVideoPlayer, customVideoPlayer)));
+                    .equals(other.customVideoPlayer, customVideoPlayer)) &&
+            (identical(other.strechableHalfModal, strechableHalfModal) ||
+                const DeepCollectionEquality()
+                    .equals(other.strechableHalfModal, strechableHalfModal)));
   }
 
   @override
@@ -186,7 +207,8 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(appName) ^
       const DeepCollectionEquality().hash(homePageTitle) ^
       const DeepCollectionEquality().hash(listAndFadeBar) ^
-      const DeepCollectionEquality().hash(customVideoPlayer);
+      const DeepCollectionEquality().hash(customVideoPlayer) ^
+      const DeepCollectionEquality().hash(strechableHalfModal);
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +221,8 @@ abstract class _Message implements Message {
       {required String appName,
       required String homePageTitle,
       required String listAndFadeBar,
-      required String customVideoPlayer}) = _$_Message;
+      required String customVideoPlayer,
+      required String strechableHalfModal}) = _$_Message;
 
   @override
   String get appName => throw _privateConstructorUsedError;
@@ -209,6 +232,8 @@ abstract class _Message implements Message {
   String get listAndFadeBar => throw _privateConstructorUsedError;
   @override
   String get customVideoPlayer => throw _privateConstructorUsedError;
+  @override
+  String get strechableHalfModal => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>

@@ -11,6 +11,7 @@ abstract class Message with _$Message {
     required String homePageTitle,
     required String listAndFadeBar,
     required String customVideoPlayer,
+    required String strechableHalfModal,
   }) = _Message;
 
   factory Message.of(Locale locale) {
@@ -28,6 +29,7 @@ abstract class Message with _$Message {
         homePageTitle: 'Playground Home',
         listAndFadeBar: 'List And Fade Bar',
         customVideoPlayer: 'Custom Video Player',
+        strechableHalfModal: 'Strechable Half-Modal',
       );
 
   factory Message.ja() => Message(
@@ -35,5 +37,6 @@ abstract class Message with _$Message {
         homePageTitle: 'ホーム',
         listAndFadeBar: 'FadeBarとListView',
         customVideoPlayer: 'カスタムVideoPlayer',
+        strechableHalfModal: '伸縮可能ハーフモーダル',
       );
 }
