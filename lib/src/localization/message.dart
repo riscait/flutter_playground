@@ -14,6 +14,7 @@ abstract class Message with _$Message {
     required String strechableHalfModal,
     required String awaitableButton,
     required String awaitableButtonDescription,
+    required String listOrGridSwitcher,
   }) = _Message;
 
   factory Message.of(Locale locale) {
@@ -35,6 +36,7 @@ abstract class Message with _$Message {
         awaitableButton: 'Exclusive Button',
         awaitableButtonDescription:
             'When the button is tapped, the indicator will start spinning inside the button and it will become untappable. When the asynchronous function passed to [onPressed] finishes, the button will become tapable again.',
+        listOrGridSwitcher: 'List or Grid Switcher',
       );
 
   factory Message.ja() => Message(
@@ -46,5 +48,6 @@ abstract class Message with _$Message {
         awaitableButton: '連打防止Button',
         awaitableButtonDescription:
             'ボタンをタップすると、ボタン内でインジケータが回り始めてタップできなくなる。[onPressed]に渡した非同期関数が終了すると、再度タップ可能になる。',
+        listOrGridSwitcher: 'List/Grid表示切り替え',
       );
 }
