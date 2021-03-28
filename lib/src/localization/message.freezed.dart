@@ -21,13 +21,17 @@ class _$MessageTearOff {
       required String homePageTitle,
       required String listAndFadeBar,
       required String customVideoPlayer,
-      required String strechableHalfModal}) {
+      required String strechableHalfModal,
+      required String awaitableButton,
+      required String awaitableButtonDescription}) {
     return _Message(
       appName: appName,
       homePageTitle: homePageTitle,
       listAndFadeBar: listAndFadeBar,
       customVideoPlayer: customVideoPlayer,
       strechableHalfModal: strechableHalfModal,
+      awaitableButton: awaitableButton,
+      awaitableButtonDescription: awaitableButtonDescription,
     );
   }
 }
@@ -42,6 +46,8 @@ mixin _$Message {
   String get listAndFadeBar => throw _privateConstructorUsedError;
   String get customVideoPlayer => throw _privateConstructorUsedError;
   String get strechableHalfModal => throw _privateConstructorUsedError;
+  String get awaitableButton => throw _privateConstructorUsedError;
+  String get awaitableButtonDescription => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -56,7 +62,9 @@ abstract class $MessageCopyWith<$Res> {
       String homePageTitle,
       String listAndFadeBar,
       String customVideoPlayer,
-      String strechableHalfModal});
+      String strechableHalfModal,
+      String awaitableButton,
+      String awaitableButtonDescription});
 }
 
 /// @nodoc
@@ -74,6 +82,8 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? listAndFadeBar = freezed,
     Object? customVideoPlayer = freezed,
     Object? strechableHalfModal = freezed,
+    Object? awaitableButton = freezed,
+    Object? awaitableButtonDescription = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -96,6 +106,14 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.strechableHalfModal
           : strechableHalfModal // ignore: cast_nullable_to_non_nullable
               as String,
+      awaitableButton: awaitableButton == freezed
+          ? _value.awaitableButton
+          : awaitableButton // ignore: cast_nullable_to_non_nullable
+              as String,
+      awaitableButtonDescription: awaitableButtonDescription == freezed
+          ? _value.awaitableButtonDescription
+          : awaitableButtonDescription // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -110,7 +128,9 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String homePageTitle,
       String listAndFadeBar,
       String customVideoPlayer,
-      String strechableHalfModal});
+      String strechableHalfModal,
+      String awaitableButton,
+      String awaitableButtonDescription});
 }
 
 /// @nodoc
@@ -129,6 +149,8 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? listAndFadeBar = freezed,
     Object? customVideoPlayer = freezed,
     Object? strechableHalfModal = freezed,
+    Object? awaitableButton = freezed,
+    Object? awaitableButtonDescription = freezed,
   }) {
     return _then(_Message(
       appName: appName == freezed
@@ -151,6 +173,14 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.strechableHalfModal
           : strechableHalfModal // ignore: cast_nullable_to_non_nullable
               as String,
+      awaitableButton: awaitableButton == freezed
+          ? _value.awaitableButton
+          : awaitableButton // ignore: cast_nullable_to_non_nullable
+              as String,
+      awaitableButtonDescription: awaitableButtonDescription == freezed
+          ? _value.awaitableButtonDescription
+          : awaitableButtonDescription // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -162,7 +192,9 @@ class _$_Message implements _Message {
       required this.homePageTitle,
       required this.listAndFadeBar,
       required this.customVideoPlayer,
-      required this.strechableHalfModal});
+      required this.strechableHalfModal,
+      required this.awaitableButton,
+      required this.awaitableButtonDescription});
 
   @override
   final String appName;
@@ -174,10 +206,14 @@ class _$_Message implements _Message {
   final String customVideoPlayer;
   @override
   final String strechableHalfModal;
+  @override
+  final String awaitableButton;
+  @override
+  final String awaitableButtonDescription;
 
   @override
   String toString() {
-    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal)';
+    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription)';
   }
 
   @override
@@ -198,7 +234,15 @@ class _$_Message implements _Message {
                     .equals(other.customVideoPlayer, customVideoPlayer)) &&
             (identical(other.strechableHalfModal, strechableHalfModal) ||
                 const DeepCollectionEquality()
-                    .equals(other.strechableHalfModal, strechableHalfModal)));
+                    .equals(other.strechableHalfModal, strechableHalfModal)) &&
+            (identical(other.awaitableButton, awaitableButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.awaitableButton, awaitableButton)) &&
+            (identical(other.awaitableButtonDescription,
+                    awaitableButtonDescription) ||
+                const DeepCollectionEquality().equals(
+                    other.awaitableButtonDescription,
+                    awaitableButtonDescription)));
   }
 
   @override
@@ -208,7 +252,9 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(homePageTitle) ^
       const DeepCollectionEquality().hash(listAndFadeBar) ^
       const DeepCollectionEquality().hash(customVideoPlayer) ^
-      const DeepCollectionEquality().hash(strechableHalfModal);
+      const DeepCollectionEquality().hash(strechableHalfModal) ^
+      const DeepCollectionEquality().hash(awaitableButton) ^
+      const DeepCollectionEquality().hash(awaitableButtonDescription);
 
   @JsonKey(ignore: true)
   @override
@@ -222,7 +268,9 @@ abstract class _Message implements Message {
       required String homePageTitle,
       required String listAndFadeBar,
       required String customVideoPlayer,
-      required String strechableHalfModal}) = _$_Message;
+      required String strechableHalfModal,
+      required String awaitableButton,
+      required String awaitableButtonDescription}) = _$_Message;
 
   @override
   String get appName => throw _privateConstructorUsedError;
@@ -234,6 +282,10 @@ abstract class _Message implements Message {
   String get customVideoPlayer => throw _privateConstructorUsedError;
   @override
   String get strechableHalfModal => throw _privateConstructorUsedError;
+  @override
+  String get awaitableButton => throw _privateConstructorUsedError;
+  @override
+  String get awaitableButtonDescription => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>

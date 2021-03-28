@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import 'awaitable_button/awaitable_button.dart';
 import 'cutom_video_player/video_player_page.dart';
 import 'list_and_fade_bar/list_and_fade_bar.dart';
 import 'localization/localization.dart';
@@ -23,13 +24,13 @@ class HomePage extends HookWidget {
       ),
       body: CustomScrollView(
         slivers: <Widget>[
-          const SliverAppBar(
+          SliverAppBar(
             floating: true,
             pinned: true,
             snap: true,
-            expandedHeight: 250.0,
+            expandedHeight: 100.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('Demo'),
+              title: Text(Localized.of(context).appName),
             ),
           ),
           SliverFixedExtentList(
@@ -49,6 +50,10 @@ class HomePage extends HookWidget {
                 ListTile(
                   title: Text(Localized.of(context).strechableHalfModal),
                   onTap: () => navigateToPage(const StretchableHalfModal()),
+                ),
+                ListTile(
+                  title: Text(Localized.of(context).awaitableButton),
+                  onTap: () => navigateToPage(const AwaitableButtonPage()),
                 ),
               ],
             ),
