@@ -41,29 +41,27 @@ class ListOrGrid extends HookWidget {
         displayMode == _DisplayMode.list
             ? const _ListView()
             : const _GridView(),
-        _ModeSelector(displayMode: displayMode),
+        const _ModeSelector(),
       ],
     );
   }
 }
 
-class _ModeSelector extends StatelessWidget {
+class _ModeSelector extends HookWidget {
   const _ModeSelector({
     Key? key,
-    required this.displayMode,
   }) : super(key: key);
-
-  final _DisplayMode displayMode;
 
   @override
   Widget build(BuildContext context) {
+    final displayMode = useProvider(displayModeProvider).state;
     return Container(
       padding: const EdgeInsets.only(right: 16, bottom: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ChoiceChip(
-            label: Icon(Icons.list_alt),
+            label: const Icon(Icons.list_alt),
             selected: displayMode == _DisplayMode.list,
             onSelected: (isOn) => isOn
                 ? context.read(displayModeProvider).state = _DisplayMode.list
@@ -71,7 +69,7 @@ class _ModeSelector extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           ChoiceChip(
-            label: Icon(Icons.grid_on),
+            label: const Icon(Icons.grid_on),
             selected: displayMode == _DisplayMode.grid,
             onSelected: (isOn) => isOn
                 ? context.read(displayModeProvider).state = _DisplayMode.grid

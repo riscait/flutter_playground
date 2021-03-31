@@ -110,7 +110,7 @@ class _AwaitableButtonState extends State<AwaitableButton> {
       return;
     }
     setState(() => _isExecuting = true);
-    await Future(() => widget.onPressed!());
+    await Future(() => widget.onPressed?.call());
     setState(() => _isExecuting = false);
   }
 }
@@ -129,7 +129,7 @@ class _Indicator extends StatelessWidget {
     return SizedBox(
       width: size,
       height: size,
-      child: CircularProgressIndicator(
+      child: const CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation(Colors.white),
         strokeWidth: 2,
       ),
