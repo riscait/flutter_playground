@@ -53,7 +53,6 @@ class VideoPlayerArea extends HookWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            // 動画
             GestureDetector(
               onTap: () => _onTapVideo(
                 context,
@@ -86,7 +85,7 @@ class VideoPlayerArea extends HookWidget {
                         child: const BottomControlView(),
                       ),
                     // 再生終了後の表示
-                    if (isFinished)
+                    if (isFinished) ...[
                       // リプレイボタン
                       Positioned(
                         left: 8,
@@ -109,12 +108,12 @@ class VideoPlayerArea extends HookWidget {
                           ),
                         ),
                       ),
-                    if (isFinished)
                       const Positioned(
                         right: 0,
                         bottom: 16,
                         child: NextVideoButton(),
                       ),
+                    ],
                   ],
                 ),
               ),
@@ -335,7 +334,7 @@ class BottomControlView extends HookWidget {
           ],
         ),
         SizedBox(
-          height: 2,
+          height: 12,
           child: const DurationIndicator(),
         ),
       ],
@@ -462,19 +461,19 @@ class DurationIndicator extends HookWidget {
     final max = duration.inSeconds.toDouble();
     final current = useProvider(videoPositionSecondsProvider).state;
     return SliderTheme(
-      data: SliderThemeData(
+      data: SliderTheme.of(context).copyWith(
         trackHeight: 2,
         trackShape: CustomTrackShape(),
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6),
       ),
       child: Slider(
         min: 0,
         max: max,
         value: current,
-        label: current.toString(),
         activeColor: const Color(0xFFFD4425),
         inactiveColor: const Color(0xFFC4C4C4),
         // value: positonInt / durationInt,
-        // onChangeStart: (positon) => print,
+        onChangeStart: (positon) => print('Start Sliding'),
         // シークバーをドラッグして移動させたらStateProviderに反映させる
         onChanged: (position) =>
             context.read(videoPositionSecondsProvider).state = position,
@@ -485,13 +484,6 @@ class DurationIndicator extends HookWidget {
       ),
     );
   }
-
-  // int _toMilliseconds(Duration d) {
-  //   return d.inHours * 3600000 +
-  //       d.inMinutes * 60000 +
-  //       d.inSeconds * 1000 +
-  //       d.inMilliseconds;
-  // }
 }
 
 /// デフォルトのSliderThemeでは両端に余白ができるため、
@@ -506,7 +498,7 @@ class CustomTrackShape extends RoundedRectSliderTrackShape {
   }) {
     final height = sliderTheme.trackHeight ?? 2;
     final left = offset.dx;
-    final top = offset.dy;
+    final top = (parentBox.size.height - (sliderTheme.trackHeight ?? 2)) / 2;
     final width = parentBox.size.width;
     return Rect.fromLTWH(left, top, width, height);
   }
