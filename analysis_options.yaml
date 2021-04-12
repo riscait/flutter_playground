@@ -1,0 +1,5 @@
+analyzer:
+  exclude:
+    - lib/generated_*.dart
+    - lib/**/*.freezed.dart
+    - lib/**/*.g.dart

@@ -34,7 +34,7 @@ extension PlayingStatusExt on PlayingStatus {
 
 /// 動画プレイヤーの状態
 @freezed
-abstract class VideoPlayerState with _$VideoPlayerState {
+class VideoPlayerState with _$VideoPlayerState {
   const factory VideoPlayerState({
     /// 動画プレイヤーの再生状態
     @Default(PlayingStatus.preparing) PlayingStatus playingStatus,
