@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import 'api_client_page/api_client_page.dart';
 import 'awaitable_button/awaitable_button.dart';
 import 'cutom_video_player/video_player_page.dart';
 import 'list_and_fade_bar/list_and_fade_bar.dart';
@@ -59,6 +60,10 @@ class HomePage extends HookWidget {
                 ListTile(
                   title: Text(Localized.of(context).listOrGridSwitcher),
                   onTap: () => navigateToPage(const ListOrGridSwitcherPage()),
+                ),
+                ListTile(
+                  title: Text(Localized.of(context).apiClientPage),
+                  onTap: () => navigateToPage(const ApiClientPage()),
                 ),
               ],
             ),

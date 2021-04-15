@@ -12,6 +12,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  dio: ^4.0.0
   flutter_hooks: ^0.16.0
   freezed_annotation: ^0.14.1
   hooks_riverpod: ^0.13.1
@@ -20,8 +21,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: 
+  build_runner: null
   freezed: ^0.14.1
+  json_serializable: ^4.1.0
 
 flutter:
   uses-material-design: true
