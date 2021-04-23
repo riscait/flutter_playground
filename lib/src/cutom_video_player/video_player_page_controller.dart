@@ -164,7 +164,6 @@ class VideoPlayerPageController extends StateNotifier<VideoPlayerState> {
     final target = currentPosition + const Duration(seconds: 10);
     await state.videoPlayerController?.seekTo(target);
     // 現在の再生時間表示を更新させるために使用する
-    // state = state.copyWith(seekTarget: target);
     _updateSeekBarPosition(target.inSeconds.toDouble());
   }
 
@@ -177,7 +176,6 @@ class VideoPlayerPageController extends StateNotifier<VideoPlayerState> {
     final target = currentPosition + const Duration(seconds: -10);
     await state.videoPlayerController?.seekTo(target);
     // 現在の再生時間表示を更新させるために使用する
-    // state = state.copyWith(seekTarget: target);
     _updateSeekBarPosition(target.inSeconds.toDouble());
   }
 

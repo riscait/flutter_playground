@@ -53,6 +53,7 @@ class VideoPlayerArea extends HookWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
+            // プレイヤー部分全体のタップイベント
             GestureDetector(
               onTap: () => _onTapVideo(
                 context,
@@ -111,7 +112,7 @@ class VideoPlayerArea extends HookWidget {
                       const Positioned(
                         right: 0,
                         bottom: 16,
-                        child: NextVideoButton(),
+                        child: _NextVideoButton(),
                       ),
                     ],
                   ],
@@ -143,7 +144,7 @@ class VideoPlayerArea extends HookWidget {
         controller.play();
         break;
       case PlayingStatus.finished:
-        // 個別ボタンに任せるため何もしない
+        // 個別のボタンに任せるため、画面タップ自体では何もしない
         break;
     }
   }
@@ -291,7 +292,7 @@ class BottomControlView extends HookWidget {
               ),
               onPressed: context.read(videoPlayerControllerProvider).play,
             ),
-            const DurationText(),
+            const _DurationText(),
             const Spacer(),
             TextButton.icon(
               onPressed:
@@ -330,12 +331,12 @@ class BottomControlView extends HookWidget {
               color: Colors.white,
               onPressed:
                   context.read(videoPlayerControllerProvider).toggleFullScreen,
-            )
+            ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
-          child: const DurationIndicator(),
+          child: _SeekBar(),
         ),
       ],
     );
@@ -343,8 +344,8 @@ class BottomControlView extends HookWidget {
 }
 
 /// 次の動画を再生するボタン
-class NextVideoButton extends HookWidget {
-  const NextVideoButton({
+class _NextVideoButton extends HookWidget {
+  const _NextVideoButton({
     Key? key,
   }) : super(key: key);
 
@@ -385,40 +386,18 @@ class NextVideoButton extends HookWidget {
   }
 }
 
-/// 動画プレイヤー中央に乗せるボタン
-class CircleButton extends StatelessWidget {
-  const CircleButton({
-    Key? key,
-    required this.iconData,
-  }) : super(key: key);
-
-  final IconData iconData;
-
-  @override
-  Widget build(BuildContext context) {
-    return Icon(
-      iconData,
-      color: Colors.white,
-      size: 64,
-    );
-  }
-}
-
 /// Durationを以下の形式の文字列に変換して表示するためのWidget
 /// 時間があるときは `1:05:30` (時間：分：秒)
 /// 時間がないときは `5:30` （分：秒）
-class DurationText extends HookWidget {
-  const DurationText({Key? key}) : super(key: key);
+class _DurationText extends HookWidget {
+  const _DurationText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final videoPlayerController = useProvider(videoPlayerControllerProvider
         .state
         .select((s) => s.videoPlayerController));
-    // 10秒送りした時に更新するため
     final currentSeek = useProvider(videoPositionSecondsProvider).state;
-    // final currentPositon =
-    //     videoPlayerController?.value.position ?? Duration.zero;
     final videoDuration =
         videoPlayerController?.value.duration ?? Duration.zero;
     return Text(
@@ -450,8 +429,8 @@ class DurationText extends HookWidget {
 }
 
 /// 動画の再生位置を示す線形インジケータ
-class DurationIndicator extends HookWidget {
-  const DurationIndicator({Key? key}) : super(key: key);
+class _SeekBar extends HookWidget {
+  const _SeekBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -463,8 +442,8 @@ class DurationIndicator extends HookWidget {
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
         trackHeight: 2,
-        trackShape: CustomTrackShape(),
-        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6),
+        trackShape: _CustomTrackShape(),
+        thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 6),
       ),
       child: Slider(
         min: 0,
@@ -486,8 +465,8 @@ class DurationIndicator extends HookWidget {
   }
 }
 
-/// デフォルトのSliderThemeでは両端に余白ができるため、
-class CustomTrackShape extends RoundedRectSliderTrackShape {
+/// デフォルトのSliderThemeでは両端に余白ができるためカスタムクラスを作成
+class _CustomTrackShape extends RoundedRectSliderTrackShape {
   @override
   Rect getPreferredRect({
     required RenderBox parentBox,

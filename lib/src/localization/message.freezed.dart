@@ -24,7 +24,8 @@ class _$MessageTearOff {
       required String strechableHalfModal,
       required String awaitableButton,
       required String awaitableButtonDescription,
-      required String listOrGridSwitcher}) {
+      required String listOrGridSwitcher,
+      required String apiClientPage}) {
     return _Message(
       appName: appName,
       homePageTitle: homePageTitle,
@@ -34,6 +35,7 @@ class _$MessageTearOff {
       awaitableButton: awaitableButton,
       awaitableButtonDescription: awaitableButtonDescription,
       listOrGridSwitcher: listOrGridSwitcher,
+      apiClientPage: apiClientPage,
     );
   }
 }
@@ -51,6 +53,7 @@ mixin _$Message {
   String get awaitableButton => throw _privateConstructorUsedError;
   String get awaitableButtonDescription => throw _privateConstructorUsedError;
   String get listOrGridSwitcher => throw _privateConstructorUsedError;
+  String get apiClientPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -68,7 +71,8 @@ abstract class $MessageCopyWith<$Res> {
       String strechableHalfModal,
       String awaitableButton,
       String awaitableButtonDescription,
-      String listOrGridSwitcher});
+      String listOrGridSwitcher,
+      String apiClientPage});
 }
 
 /// @nodoc
@@ -89,6 +93,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? awaitableButton = freezed,
     Object? awaitableButtonDescription = freezed,
     Object? listOrGridSwitcher = freezed,
+    Object? apiClientPage = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -123,6 +128,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.listOrGridSwitcher
           : listOrGridSwitcher // ignore: cast_nullable_to_non_nullable
               as String,
+      apiClientPage: apiClientPage == freezed
+          ? _value.apiClientPage
+          : apiClientPage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -140,7 +149,8 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String strechableHalfModal,
       String awaitableButton,
       String awaitableButtonDescription,
-      String listOrGridSwitcher});
+      String listOrGridSwitcher,
+      String apiClientPage});
 }
 
 /// @nodoc
@@ -162,6 +172,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? awaitableButton = freezed,
     Object? awaitableButtonDescription = freezed,
     Object? listOrGridSwitcher = freezed,
+    Object? apiClientPage = freezed,
   }) {
     return _then(_Message(
       appName: appName == freezed
@@ -196,6 +207,10 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.listOrGridSwitcher
           : listOrGridSwitcher // ignore: cast_nullable_to_non_nullable
               as String,
+      apiClientPage: apiClientPage == freezed
+          ? _value.apiClientPage
+          : apiClientPage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -210,7 +225,8 @@ class _$_Message implements _Message {
       required this.strechableHalfModal,
       required this.awaitableButton,
       required this.awaitableButtonDescription,
-      required this.listOrGridSwitcher});
+      required this.listOrGridSwitcher,
+      required this.apiClientPage});
 
   @override
   final String appName;
@@ -228,10 +244,12 @@ class _$_Message implements _Message {
   final String awaitableButtonDescription;
   @override
   final String listOrGridSwitcher;
+  @override
+  final String apiClientPage;
 
   @override
   String toString() {
-    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher)';
+    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher, apiClientPage: $apiClientPage)';
   }
 
   @override
@@ -263,7 +281,10 @@ class _$_Message implements _Message {
                     awaitableButtonDescription)) &&
             (identical(other.listOrGridSwitcher, listOrGridSwitcher) ||
                 const DeepCollectionEquality()
-                    .equals(other.listOrGridSwitcher, listOrGridSwitcher)));
+                    .equals(other.listOrGridSwitcher, listOrGridSwitcher)) &&
+            (identical(other.apiClientPage, apiClientPage) ||
+                const DeepCollectionEquality()
+                    .equals(other.apiClientPage, apiClientPage)));
   }
 
   @override
@@ -276,7 +297,8 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(strechableHalfModal) ^
       const DeepCollectionEquality().hash(awaitableButton) ^
       const DeepCollectionEquality().hash(awaitableButtonDescription) ^
-      const DeepCollectionEquality().hash(listOrGridSwitcher);
+      const DeepCollectionEquality().hash(listOrGridSwitcher) ^
+      const DeepCollectionEquality().hash(apiClientPage);
 
   @JsonKey(ignore: true)
   @override
@@ -293,7 +315,8 @@ abstract class _Message implements Message {
       required String strechableHalfModal,
       required String awaitableButton,
       required String awaitableButtonDescription,
-      required String listOrGridSwitcher}) = _$_Message;
+      required String listOrGridSwitcher,
+      required String apiClientPage}) = _$_Message;
 
   @override
   String get appName => throw _privateConstructorUsedError;
@@ -311,6 +334,8 @@ abstract class _Message implements Message {
   String get awaitableButtonDescription => throw _privateConstructorUsedError;
   @override
   String get listOrGridSwitcher => throw _privateConstructorUsedError;
+  @override
+  String get apiClientPage => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>
