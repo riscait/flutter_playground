@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'video_player_area.dart';
+import '../features/cutom_video_player/custom_video_player.dart';
 import 'video_player_page_controller.dart';
 
 /// 動画プレイヤーと動画の関連情報を表示する画面

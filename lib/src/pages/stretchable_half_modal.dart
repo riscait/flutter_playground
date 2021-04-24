@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/src/localization/localization.dart';
+
+import '../localizer/localizer.dart';
 
 class StretchableHalfModal extends StatelessWidget {
   const StretchableHalfModal({

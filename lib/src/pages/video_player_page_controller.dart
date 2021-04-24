@@ -1,10 +1,8 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_playground/src/cutom_video_player/video_player_area.dart';
-import 'package:flutter_playground/src/cutom_video_player/video_player_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:video_player/video_player.dart';
 
-import 'video_entity.dart';
+import '../features/cutom_video_player/custom_video_player.dart';
 
 final videoPlayerControllerProvider =
     StateNotifierProvider.autoDispose<VideoPlayerPageController>((ref) {

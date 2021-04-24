@@ -3,14 +3,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../providers/shared_preferences.dart';
+import '../../providers/shared_preferences.dart';
 
 final themeSelectorProvider = StateNotifierProvider(
-  (ref) => ThemeSelector(ref.read),
+  (ref) => ThemeNotifier(ref.read),
 );
 
-class ThemeSelector extends StateNotifier<ThemeMode> {
-  ThemeSelector(this._read) : super(ThemeMode.system) {
+class ThemeNotifier extends StateNotifier<ThemeMode> {
+  ThemeNotifier(this._read) : super(ThemeMode.system) {
     Future(() async {
       state = await _current;
     });

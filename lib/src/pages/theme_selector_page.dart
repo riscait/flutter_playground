@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_playground/src/localization/localization.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'theme_selector.dart';
-import 'theme_mode_ext.dart';
+import '../localizer/localizer.dart';
+import '../features/theme_selector/theme_selector.dart';
 
 class ThemeSelectorPage extends StatelessWidget {
   const ThemeSelectorPage();

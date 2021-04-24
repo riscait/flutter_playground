@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'api_client_page/api_client_page.dart';
-import 'awaitable_button/awaitable_button.dart';
-import 'cutom_video_player/video_player_page.dart';
-import 'list_and_fade_bar/list_and_fade_bar.dart';
-import 'list_or_grid_switcher/list_or_grid_switcher.dart';
-import 'localization/localization.dart';
-import 'stretchable_half_modal/stretchable_half_modal.dart';
-import 'theme_selector.dart/theme_selector_page.dart';
+import '../localizer/localizer.dart';
+import 'api_client_page.dart';
+import 'awaitable_button_page.dart';
+import 'list_and_fade_bar.dart';
+import 'list_or_grid_switcher.dart';
+import 'stretchable_half_modal.dart';
+import 'theme_selector_page.dart';
+import 'video_player_page.dart';
 
 class HomePage extends HookWidget {
   HomePage({

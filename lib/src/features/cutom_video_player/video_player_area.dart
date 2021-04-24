@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_playground/src/common_widgets/common_widgets.dart';
-import 'package:flutter_playground/src/cutom_video_player/video_player_page_controller.dart';
+import 'package:flutter_playground/src/pages/video_player_page_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:video_player/video_player.dart';
 

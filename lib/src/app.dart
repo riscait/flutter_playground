@@ -3,10 +3,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'home_page.dart';
-import 'localization/localization.dart';
+import 'pages/home_page.dart';
+import 'localizer/localizer.dart';
 import 'providers/navigator_key.dart';
-import 'theme_selector.dart/theme_selector.dart';
+import 'features/theme_selector/theme_provider.dart';
 
 class App extends HookWidget {
   @override

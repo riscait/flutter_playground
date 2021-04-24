@@ -1,35 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/src/localization/localized.dart';
-
-class AwaitableButtonPage extends StatelessWidget {
-  const AwaitableButtonPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(Localized.of(context).awaitableButton)),
-      body: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(Localized.of(context).awaitableButtonDescription),
-            AwaitableButton(
-              onPressed: () async {
-                print('Start');
-                await Future.delayed(Duration(seconds: 3));
-                print('end');
-              },
-              textLabel: 'START',
-              executingLabel: 'Loading...',
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 /// 連打防止のボタン
 /// [onPressed]に非同期な関数を設定すると、実行中はインジケータを表示し押せなくなる

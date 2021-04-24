@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../localization/localization.dart';
-import 'api_repositoy.dart';
+import '../localizer/localizer.dart';
+import '../features/api_client/api_repositoy.dart';
 
 class ApiClientPage extends StatelessWidget {
   const ApiClientPage({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _Content extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final repository = useProvider(apiRepositoryProvider);
-    final future = useMemoized(() => repository.fetchUser('riscait'), []);
+    final future = useMemoized(() => repository.fetchUser('riscait'));
     final snapshot = useFuture(future, initialData: null);
     if (snapshot.hasError) {
       return ErrorWidget(snapshot.error!);
