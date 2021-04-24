@@ -16,6 +16,7 @@ class Message with _$Message {
     required String awaitableButtonDescription,
     required String listOrGridSwitcher,
     required String apiClientPage,
+    required String themeSelector,
   }) = _Message;
 
   factory Message.of(Locale locale) {
@@ -39,6 +40,7 @@ class Message with _$Message {
             'When the button is tapped, the indicator will start spinning inside the button and it will become untappable. When the asynchronous function passed to [onPressed] finishes, the button will become tapable again.',
         listOrGridSwitcher: 'List or Grid Switcher',
         apiClientPage: 'API Client and Repository',
+        themeSelector: 'Theme Selector',
       );
 
   factory Message.ja() => Message(
@@ -52,5 +54,6 @@ class Message with _$Message {
             'ボタンをタップすると、ボタン内でインジケータが回り始めてタップできなくなる。[onPressed]に渡した非同期関数が終了すると、再度タップ可能になる。',
         listOrGridSwitcher: 'List/Grid表示切り替え',
         apiClientPage: 'APIのClientとRepository',
+        themeSelector: 'Themeの切り替え',
       );
 }

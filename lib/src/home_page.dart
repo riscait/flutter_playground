@@ -8,6 +8,7 @@ import 'list_and_fade_bar/list_and_fade_bar.dart';
 import 'list_or_grid_switcher/list_or_grid_switcher.dart';
 import 'localization/localization.dart';
 import 'stretchable_half_modal/stretchable_half_modal.dart';
+import 'theme_selector.dart/theme_selector_page.dart';
 
 class HomePage extends HookWidget {
   HomePage({
@@ -64,6 +65,10 @@ class HomePage extends HookWidget {
                 ListTile(
                   title: Text(Localized.of(context).apiClientPage),
                   onTap: () => navigateToPage(const ApiClientPage()),
+                ),
+                ListTile(
+                  title: Text(Localized.of(context).themeSelector),
+                  onTap: () => navigateToPage(const ThemeSelectorPage()),
                 ),
               ],
             ),

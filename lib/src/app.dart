@@ -6,15 +6,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'home_page.dart';
 import 'localization/localization.dart';
 import 'providers/navigator_key.dart';
+import 'theme_selector.dart/theme_selector.dart';
 
 class App extends HookWidget {
   @override
   Widget build(BuildContext context) {
+    final themeMode = useProvider(themeSelectorProvider.state);
     return MaterialApp(
       navigatorKey: useProvider(navigatorKeyProvider),
       title: 'Flutter Playground by Riscait',
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: themeMode == ThemeMode.dark ? ThemeData.dark() : ThemeData.light(),
+      darkTheme: themeMode == ThemeMode.system ? ThemeData.dark() : null,
       home: HomePage(),
       localizationsDelegates: [
         const LocalizedDelegate(),

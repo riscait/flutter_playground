@@ -17,6 +17,7 @@ dependencies:
   freezed_annotation: ^0.14.1
   hooks_riverpod: ^0.13.1
   video_player: ^2.0.2
+  shared_preferences: ^2.0.5
 
 dev_dependencies:
   flutter_test:
