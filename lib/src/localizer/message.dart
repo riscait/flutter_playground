@@ -17,6 +17,7 @@ class Message with _$Message {
     required String listOrGridSwitcher,
     required String apiClientPage,
     required String themeSelector,
+    required String pullToRefresh,
   }) = _Message;
 
   factory Message.of(Locale locale) {
@@ -41,6 +42,7 @@ class Message with _$Message {
         listOrGridSwitcher: 'List or Grid Switcher',
         apiClientPage: 'API Client and Repository',
         themeSelector: 'Theme Selector',
+        pullToRefresh: 'Pull-to-refresh',
       );
 
   factory Message.ja() => Message(
@@ -55,5 +57,6 @@ class Message with _$Message {
         listOrGridSwitcher: 'List/Grid表示切り替え',
         apiClientPage: 'APIのClientとRepository',
         themeSelector: 'Themeの切り替え',
+        pullToRefresh: '引っ張って更新',
       );
 }

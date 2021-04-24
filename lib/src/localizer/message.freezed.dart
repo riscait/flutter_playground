@@ -26,7 +26,8 @@ class _$MessageTearOff {
       required String awaitableButtonDescription,
       required String listOrGridSwitcher,
       required String apiClientPage,
-      required String themeSelector}) {
+      required String themeSelector,
+      required String pullToRefresh}) {
     return _Message(
       appName: appName,
       homePageTitle: homePageTitle,
@@ -38,6 +39,7 @@ class _$MessageTearOff {
       listOrGridSwitcher: listOrGridSwitcher,
       apiClientPage: apiClientPage,
       themeSelector: themeSelector,
+      pullToRefresh: pullToRefresh,
     );
   }
 }
@@ -57,6 +59,7 @@ mixin _$Message {
   String get listOrGridSwitcher => throw _privateConstructorUsedError;
   String get apiClientPage => throw _privateConstructorUsedError;
   String get themeSelector => throw _privateConstructorUsedError;
+  String get pullToRefresh => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -76,7 +79,8 @@ abstract class $MessageCopyWith<$Res> {
       String awaitableButtonDescription,
       String listOrGridSwitcher,
       String apiClientPage,
-      String themeSelector});
+      String themeSelector,
+      String pullToRefresh});
 }
 
 /// @nodoc
@@ -99,6 +103,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? listOrGridSwitcher = freezed,
     Object? apiClientPage = freezed,
     Object? themeSelector = freezed,
+    Object? pullToRefresh = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -141,6 +146,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.themeSelector
           : themeSelector // ignore: cast_nullable_to_non_nullable
               as String,
+      pullToRefresh: pullToRefresh == freezed
+          ? _value.pullToRefresh
+          : pullToRefresh // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -160,7 +169,8 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String awaitableButtonDescription,
       String listOrGridSwitcher,
       String apiClientPage,
-      String themeSelector});
+      String themeSelector,
+      String pullToRefresh});
 }
 
 /// @nodoc
@@ -184,6 +194,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? listOrGridSwitcher = freezed,
     Object? apiClientPage = freezed,
     Object? themeSelector = freezed,
+    Object? pullToRefresh = freezed,
   }) {
     return _then(_Message(
       appName: appName == freezed
@@ -226,6 +237,10 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.themeSelector
           : themeSelector // ignore: cast_nullable_to_non_nullable
               as String,
+      pullToRefresh: pullToRefresh == freezed
+          ? _value.pullToRefresh
+          : pullToRefresh // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -242,7 +257,8 @@ class _$_Message implements _Message {
       required this.awaitableButtonDescription,
       required this.listOrGridSwitcher,
       required this.apiClientPage,
-      required this.themeSelector});
+      required this.themeSelector,
+      required this.pullToRefresh});
 
   @override
   final String appName;
@@ -264,10 +280,12 @@ class _$_Message implements _Message {
   final String apiClientPage;
   @override
   final String themeSelector;
+  @override
+  final String pullToRefresh;
 
   @override
   String toString() {
-    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher, apiClientPage: $apiClientPage, themeSelector: $themeSelector)';
+    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher, apiClientPage: $apiClientPage, themeSelector: $themeSelector, pullToRefresh: $pullToRefresh)';
   }
 
   @override
@@ -305,7 +323,10 @@ class _$_Message implements _Message {
                     .equals(other.apiClientPage, apiClientPage)) &&
             (identical(other.themeSelector, themeSelector) ||
                 const DeepCollectionEquality()
-                    .equals(other.themeSelector, themeSelector)));
+                    .equals(other.themeSelector, themeSelector)) &&
+            (identical(other.pullToRefresh, pullToRefresh) ||
+                const DeepCollectionEquality()
+                    .equals(other.pullToRefresh, pullToRefresh)));
   }
 
   @override
@@ -320,7 +341,8 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(awaitableButtonDescription) ^
       const DeepCollectionEquality().hash(listOrGridSwitcher) ^
       const DeepCollectionEquality().hash(apiClientPage) ^
-      const DeepCollectionEquality().hash(themeSelector);
+      const DeepCollectionEquality().hash(themeSelector) ^
+      const DeepCollectionEquality().hash(pullToRefresh);
 
   @JsonKey(ignore: true)
   @override
@@ -339,7 +361,8 @@ abstract class _Message implements Message {
       required String awaitableButtonDescription,
       required String listOrGridSwitcher,
       required String apiClientPage,
-      required String themeSelector}) = _$_Message;
+      required String themeSelector,
+      required String pullToRefresh}) = _$_Message;
 
   @override
   String get appName => throw _privateConstructorUsedError;
@@ -361,6 +384,8 @@ abstract class _Message implements Message {
   String get apiClientPage => throw _privateConstructorUsedError;
   @override
   String get themeSelector => throw _privateConstructorUsedError;
+  @override
+  String get pullToRefresh => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>
