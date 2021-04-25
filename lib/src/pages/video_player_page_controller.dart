@@ -4,8 +4,8 @@ import 'package:video_player/video_player.dart';
 
 import '../features/cutom_video_player/custom_video_player.dart';
 
-final videoPlayerControllerProvider =
-    StateNotifierProvider.autoDispose<VideoPlayerPageController>((ref) {
+final videoPlayerControllerProvider = StateNotifierProvider.autoDispose<
+    VideoPlayerPageController, VideoPlayerState>((ref) {
   return VideoPlayerPageController(ref.read);
 });
 

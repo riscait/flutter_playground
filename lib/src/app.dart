@@ -11,7 +11,7 @@ import 'features/theme_selector/theme_provider.dart';
 class App extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final themeMode = useProvider(themeSelectorProvider.state);
+    final themeMode = useProvider(themeSelectorProvider);
     return MaterialApp(
       navigatorKey: useProvider(navigatorKeyProvider),
       title: 'Flutter Playground by Riscait',

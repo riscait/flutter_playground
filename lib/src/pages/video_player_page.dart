@@ -15,8 +15,8 @@ class VideoPlayerPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     // 全画面表示状態
-    final isFullScreen = useProvider(videoPlayerControllerProvider.state
-        .select((state) => state.isFullScreen));
+    final isFullScreen = useProvider(
+        videoPlayerControllerProvider.select((state) => state.isFullScreen));
     // 全画面表示ならステータスバーを非表示にする
     isFullScreen
         ? SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom])
@@ -27,7 +27,7 @@ class VideoPlayerPage extends HookWidget {
     return WillPopScope(
       onWillPop: () async {
         try {
-          await context.read(videoPlayerControllerProvider).pause();
+          await context.read(videoPlayerControllerProvider.notifier).pause();
           // ignore: avoid_catches_without_on_clauses
         } catch (_) {}
         return true;

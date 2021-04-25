@@ -8,7 +8,8 @@ import '../../providers/shared_preferences.dart';
 /// SharedPreferences で使用するテーマ保存用のキー
 const _themePrefsKey = 'selectedThemeKey';
 
-final themeSelectorProvider = StateNotifierProvider<ThemeNotifier>((ref) {
+final themeSelectorProvider =
+    StateNotifierProvider<ThemeNotifier, ThemeMode>((ref) {
   /// `SharedPreferences` を使用して、記憶しているテーマを取得
   final prefs = ref.watch(sharedPreferencesProvider);
   final index = prefs.getInt(_themePrefsKey) ?? ThemeMode.system.index;

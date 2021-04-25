@@ -15,7 +15,7 @@ dependencies:
   dio: ^4.0.0
   flutter_hooks: ^0.16.0
   freezed_annotation: ^0.14.1
-  hooks_riverpod: ^0.13.1
+  hooks_riverpod: ^0.14.0
   video_player: ^2.0.2
   shared_preferences: ^2.0.5
   http: ^0.13.1

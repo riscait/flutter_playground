@@ -26,8 +26,8 @@ class ThemeListView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeSelector = useProvider(themeSelectorProvider);
-    final currentThemeMode = useProvider(themeSelectorProvider.state);
+    final themeSelector = useProvider(themeSelectorProvider.notifier);
+    final currentThemeMode = useProvider(themeSelectorProvider);
     return ListView.builder(
       itemCount: ThemeMode.values.length,
       itemBuilder: (_, index) {

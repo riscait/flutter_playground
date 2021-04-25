@@ -19,7 +19,7 @@ class VideoPlayerArea extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final playerState = useProvider(videoPlayerControllerProvider.state);
+    final playerState = useProvider(videoPlayerControllerProvider);
     final isFullScreen = playerState.isFullScreen;
     final isReady = playerState.playingStatus.isReady;
     final isPlaying = playerState.playingStatus == PlayingStatus.playing;
@@ -93,7 +93,7 @@ class VideoPlayerArea extends HookWidget {
                         bottom: 8,
                         child: TextButton.icon(
                           onPressed: context
-                              .read(videoPlayerControllerProvider)
+                              .read(videoPlayerControllerProvider.notifier)
                               .replay,
                           icon: const Icon(
                             Icons.replay,
@@ -130,7 +130,7 @@ class VideoPlayerArea extends HookWidget {
     BuildContext context,
     PlayingStatus playingStatus,
   ) {
-    final controller = context.read(videoPlayerControllerProvider);
+    final controller = context.read(videoPlayerControllerProvider.notifier);
     switch (playingStatus) {
       case PlayingStatus.ready:
         controller.play();
@@ -177,15 +177,17 @@ class ReplayAndForwardTapDetector extends HookWidget {
         Expanded(
           child: SeekFeedbackTransition(
             isStartSide: true,
-            execute:
-                context.read(videoPlayerControllerProvider).replay10Seconds,
+            execute: context
+                .read(videoPlayerControllerProvider.notifier)
+                .replay10Seconds,
           ),
         ),
         Expanded(
           child: SeekFeedbackTransition(
             isStartSide: false,
-            execute:
-                context.read(videoPlayerControllerProvider).forward10Seconds,
+            execute: context
+                .read(videoPlayerControllerProvider.notifier)
+                .forward10Seconds,
           ),
         ),
       ],
@@ -290,13 +292,15 @@ class BottomControlView extends HookWidget {
                 Icons.play_arrow,
                 color: Colors.white,
               ),
-              onPressed: context.read(videoPlayerControllerProvider).play,
+              onPressed:
+                  context.read(videoPlayerControllerProvider.notifier).play,
             ),
             const _DurationText(),
             const Spacer(),
             TextButton.icon(
-              onPressed:
-                  context.read(videoPlayerControllerProvider).replay10Seconds,
+              onPressed: context
+                  .read(videoPlayerControllerProvider.notifier)
+                  .replay10Seconds,
               icon: const Icon(
                 Icons.fast_rewind,
                 color: Colors.white,
@@ -310,8 +314,9 @@ class BottomControlView extends HookWidget {
               ),
             ),
             TextButton.icon(
-              onPressed:
-                  context.read(videoPlayerControllerProvider).forward10Seconds,
+              onPressed: context
+                  .read(videoPlayerControllerProvider.notifier)
+                  .forward10Seconds,
               label: const Icon(
                 Icons.fast_forward,
                 color: Colors.white,
@@ -329,8 +334,9 @@ class BottomControlView extends HookWidget {
               icon: const Icon(Icons.fullscreen),
               alignment: Alignment.centerRight,
               color: Colors.white,
-              onPressed:
-                  context.read(videoPlayerControllerProvider).toggleFullScreen,
+              onPressed: context
+                  .read(videoPlayerControllerProvider.notifier)
+                  .toggleFullScreen,
             ),
           ],
         ),
@@ -352,16 +358,17 @@ class _NextVideoButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final currentVideoIndex = useProvider(
-        videoPlayerControllerProvider.state.select((s) => s.currentVideoIndex));
-    final videoList = useProvider(
-        videoPlayerControllerProvider.state.select((s) => s.videoList));
+        videoPlayerControllerProvider.select((s) => s.currentVideoIndex));
+    final videoList =
+        useProvider(videoPlayerControllerProvider.select((s) => s.videoList));
     final numberOfVideos = videoList.length;
     if (numberOfVideos <= currentVideoIndex) {
       // 次の動画がないならこのボタンは表示ししない
       return const SizedBox();
     }
     return GestureDetector(
-      onTap: () => context.read(videoPlayerControllerProvider).playNext(),
+      onTap: () =>
+          context.read(videoPlayerControllerProvider.notifier).playNext(),
       child: Container(
         padding: const EdgeInsets.fromLTRB(8, 2, 8, 4),
         color: Colors.black87,
@@ -394,9 +401,8 @@ class _DurationText extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final videoPlayerController = useProvider(videoPlayerControllerProvider
-        .state
-        .select((s) => s.videoPlayerController));
+    final videoPlayerController = useProvider(
+        videoPlayerControllerProvider.select((s) => s.videoPlayerController));
     final currentSeek = useProvider(videoPositionSecondsProvider).state;
     final videoDuration =
         videoPlayerController?.value.duration ?? Duration.zero;
@@ -434,7 +440,7 @@ class _SeekBar extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final duration = useProvider(videoPlayerControllerProvider.state
+    final duration = useProvider(videoPlayerControllerProvider
             .select((state) => state.videoPlayerController?.value.duration)) ??
         Duration.zero;
     final max = duration.inSeconds.toDouble();
@@ -457,8 +463,9 @@ class _SeekBar extends HookWidget {
         onChanged: (position) =>
             context.read(videoPositionSecondsProvider).state = position,
         // Sliderで位置を変更し終わったら、再生位置を変更して
-        onChangeEnd: (position) =>
-            context.read(videoPlayerControllerProvider).seekTo(position),
+        onChangeEnd: (position) => context
+            .read(videoPlayerControllerProvider.notifier)
+            .seekTo(position),
         // divisions: 1,
       ),
     );
