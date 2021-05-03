@@ -18,6 +18,7 @@ class Message with _$Message {
     required String apiClientPage,
     required String themeSelector,
     required String pullToRefresh,
+    required String swipableList,
   }) = _Message;
 
   factory Message.of(Locale locale) {
@@ -43,6 +44,7 @@ class Message with _$Message {
         apiClientPage: 'API Client and Repository',
         themeSelector: 'Theme Selector',
         pullToRefresh: 'Pull-to-refresh',
+        swipableList: 'Swipable List',
       );
 
   factory Message.ja() => Message(
@@ -58,5 +60,6 @@ class Message with _$Message {
         apiClientPage: 'APIのClientとRepository',
         themeSelector: 'Themeの切り替え',
         pullToRefresh: '引っ張って更新',
+        swipableList: 'スワイプ可能リストアイテム',
       );
 }

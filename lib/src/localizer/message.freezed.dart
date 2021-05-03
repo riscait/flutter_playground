@@ -27,7 +27,8 @@ class _$MessageTearOff {
       required String listOrGridSwitcher,
       required String apiClientPage,
       required String themeSelector,
-      required String pullToRefresh}) {
+      required String pullToRefresh,
+      required String swipableList}) {
     return _Message(
       appName: appName,
       homePageTitle: homePageTitle,
@@ -40,6 +41,7 @@ class _$MessageTearOff {
       apiClientPage: apiClientPage,
       themeSelector: themeSelector,
       pullToRefresh: pullToRefresh,
+      swipableList: swipableList,
     );
   }
 }
@@ -60,6 +62,7 @@ mixin _$Message {
   String get apiClientPage => throw _privateConstructorUsedError;
   String get themeSelector => throw _privateConstructorUsedError;
   String get pullToRefresh => throw _privateConstructorUsedError;
+  String get swipableList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -80,7 +83,8 @@ abstract class $MessageCopyWith<$Res> {
       String listOrGridSwitcher,
       String apiClientPage,
       String themeSelector,
-      String pullToRefresh});
+      String pullToRefresh,
+      String swipableList});
 }
 
 /// @nodoc
@@ -104,6 +108,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? apiClientPage = freezed,
     Object? themeSelector = freezed,
     Object? pullToRefresh = freezed,
+    Object? swipableList = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -150,6 +155,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.pullToRefresh
           : pullToRefresh // ignore: cast_nullable_to_non_nullable
               as String,
+      swipableList: swipableList == freezed
+          ? _value.swipableList
+          : swipableList // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +179,8 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String listOrGridSwitcher,
       String apiClientPage,
       String themeSelector,
-      String pullToRefresh});
+      String pullToRefresh,
+      String swipableList});
 }
 
 /// @nodoc
@@ -195,6 +205,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? apiClientPage = freezed,
     Object? themeSelector = freezed,
     Object? pullToRefresh = freezed,
+    Object? swipableList = freezed,
   }) {
     return _then(_Message(
       appName: appName == freezed
@@ -241,6 +252,10 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.pullToRefresh
           : pullToRefresh // ignore: cast_nullable_to_non_nullable
               as String,
+      swipableList: swipableList == freezed
+          ? _value.swipableList
+          : swipableList // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -258,7 +273,8 @@ class _$_Message implements _Message {
       required this.listOrGridSwitcher,
       required this.apiClientPage,
       required this.themeSelector,
-      required this.pullToRefresh});
+      required this.pullToRefresh,
+      required this.swipableList});
 
   @override
   final String appName;
@@ -282,10 +298,12 @@ class _$_Message implements _Message {
   final String themeSelector;
   @override
   final String pullToRefresh;
+  @override
+  final String swipableList;
 
   @override
   String toString() {
-    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher, apiClientPage: $apiClientPage, themeSelector: $themeSelector, pullToRefresh: $pullToRefresh)';
+    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher, apiClientPage: $apiClientPage, themeSelector: $themeSelector, pullToRefresh: $pullToRefresh, swipableList: $swipableList)';
   }
 
   @override
@@ -326,7 +344,10 @@ class _$_Message implements _Message {
                     .equals(other.themeSelector, themeSelector)) &&
             (identical(other.pullToRefresh, pullToRefresh) ||
                 const DeepCollectionEquality()
-                    .equals(other.pullToRefresh, pullToRefresh)));
+                    .equals(other.pullToRefresh, pullToRefresh)) &&
+            (identical(other.swipableList, swipableList) ||
+                const DeepCollectionEquality()
+                    .equals(other.swipableList, swipableList)));
   }
 
   @override
@@ -342,7 +363,8 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(listOrGridSwitcher) ^
       const DeepCollectionEquality().hash(apiClientPage) ^
       const DeepCollectionEquality().hash(themeSelector) ^
-      const DeepCollectionEquality().hash(pullToRefresh);
+      const DeepCollectionEquality().hash(pullToRefresh) ^
+      const DeepCollectionEquality().hash(swipableList);
 
   @JsonKey(ignore: true)
   @override
@@ -362,7 +384,8 @@ abstract class _Message implements Message {
       required String listOrGridSwitcher,
       required String apiClientPage,
       required String themeSelector,
-      required String pullToRefresh}) = _$_Message;
+      required String pullToRefresh,
+      required String swipableList}) = _$_Message;
 
   @override
   String get appName => throw _privateConstructorUsedError;
@@ -386,6 +409,8 @@ abstract class _Message implements Message {
   String get themeSelector => throw _privateConstructorUsedError;
   @override
   String get pullToRefresh => throw _privateConstructorUsedError;
+  @override
+  String get swipableList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>

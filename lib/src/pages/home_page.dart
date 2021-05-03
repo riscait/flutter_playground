@@ -8,6 +8,7 @@ import 'list_and_fade_bar.dart';
 import 'list_or_grid_switcher.dart';
 import 'pull_to_refresh_page.dart';
 import 'stretchable_half_modal.dart';
+import 'swipable_list_page/swipable_list_page.dart';
 import 'theme_selector_page.dart';
 import 'video_player_page.dart';
 
@@ -74,6 +75,10 @@ class HomePage extends HookWidget {
                 ListTile(
                   title: Text(Localized.of(context).pullToRefresh),
                   onTap: () => navigateToPage(const PullToRefreshPage()),
+                ),
+                ListTile(
+                  title: Text(Localized.of(context).swipableList),
+                  onTap: () => navigateToPage(const SwipableListPage()),
                 ),
               ],
             ),
