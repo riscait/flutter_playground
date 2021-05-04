@@ -5,9 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_playground",
+            "name": "debug-development",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args":[
+                "--debug",
+                // "--flavor",
+                // "development",
+                "--dart-define=FLAVOR=development"
+            ]
         }
     ]
 }
