@@ -35,9 +35,7 @@ class ThemeListView extends HookWidget {
         return RadioListTile<ThemeMode>(
           value: themeMode,
           groupValue: currentThemeMode,
-          onChanged: (newTheme) {
-            themeSelector.changeAndSave(newTheme!);
-          },
+          onChanged: (newTheme) => themeSelector.changeAndSave(newTheme!),
           title: Text(themeMode.title),
           subtitle: Text(themeMode.subtitle),
           secondary: Icon(themeMode.iconData),

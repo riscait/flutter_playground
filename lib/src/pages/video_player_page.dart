@@ -8,9 +8,7 @@ import 'video_player_page_controller.dart';
 
 /// 動画プレイヤーと動画の関連情報を表示する画面
 class VideoPlayerPage extends HookWidget {
-  const VideoPlayerPage({
-    Key? key,
-  }) : super(key: key);
+  const VideoPlayerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
