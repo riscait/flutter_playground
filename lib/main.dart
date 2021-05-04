@@ -3,8 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/app.dart';
-import 'src/flavor.dart';
-import 'src/providers/shared_preferences.dart';
+import 'src/top_level_providers/flavor.dart';
+import 'src/top_level_providers/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

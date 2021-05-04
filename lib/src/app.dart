@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'pages/home_page.dart';
 import 'localizer/localizer.dart';
-import 'providers/navigator_key.dart';
+import 'top_level_providers/navigator_key.dart';
 import 'features/theme_selector/theme_provider.dart';
 
 class App extends HookWidget {

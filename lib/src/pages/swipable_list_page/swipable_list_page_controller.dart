@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/src/pages/swipable_list_page/swipable_list_page_state.dart';
-import 'package:flutter_playground/src/providers/navigator_key.dart';
+import 'package:flutter_playground/src/top_level_providers/navigator_key.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// Provider

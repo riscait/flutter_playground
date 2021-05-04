@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../../providers/shared_preferences.dart';
+import '../../top_level_providers/shared_preferences.dart';
 
 /// SharedPreferences で使用するテーマ保存用のキー
 const _themePrefsKey = 'selectedThemeKey';
