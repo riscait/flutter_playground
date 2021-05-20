@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../localizer/localizer.dart';
 import '../features/api_client/api_repositoy.dart';
+import '../localizer/localizer.dart';
 
 class ApiClientPage extends StatelessWidget {
   const ApiClientPage({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class _Content extends HookWidget {
       return ErrorWidget(snapshot.error!);
     }
     if (!snapshot.hasData) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     }
     final user = snapshot.data!;
     return ListView(

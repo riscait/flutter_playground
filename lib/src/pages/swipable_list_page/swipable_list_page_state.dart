@@ -7,7 +7,7 @@ part 'swipable_list_page_state.freezed.dart';
 class SwipableListPageState with _$SwipableListPageState {
   const factory SwipableListPageState({
     /// 読み込み中かどうか
-    @Default([]) List<SwipableListItem> items,
+    @Default(<SwipableListItem>[]) List<SwipableListItem> items,
   }) = _SwipableListPageState;
 }
 

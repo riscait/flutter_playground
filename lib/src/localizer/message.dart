@@ -31,7 +31,7 @@ class Message with _$Message {
     throw AssertionError();
   }
 
-  factory Message.en() => Message(
+  factory Message.en() => const Message(
         appName: 'Flutter Playground',
         homePageTitle: 'Playground Home',
         listAndFadeBar: 'List And Fade Bar',
@@ -39,7 +39,7 @@ class Message with _$Message {
         strechableHalfModal: 'Strechable Half-Modal',
         awaitableButton: 'Exclusive Button',
         awaitableButtonDescription:
-            'When the button is tapped, the indicator will start spinning inside the button and it will become untappable. When the asynchronous function passed to [onPressed] finishes, the button will become tapable again.',
+            '''When the button is tapped, the indicator will start spinning inside the button and it will become untappable. When the asynchronous function passed to [onPressed] finishes, the button will become tapable again.''',
         listOrGridSwitcher: 'List or Grid Switcher',
         apiClientPage: 'API Client and Repository',
         themeSelector: 'Theme Selector',
@@ -47,7 +47,7 @@ class Message with _$Message {
         swipableList: 'Swipable List',
       );
 
-  factory Message.ja() => Message(
+  factory Message.ja() => const Message(
         appName: 'Flutter Playground',
         homePageTitle: 'ホーム',
         listAndFadeBar: 'FadeBarとListView',
@@ -55,7 +55,7 @@ class Message with _$Message {
         strechableHalfModal: '伸縮可能ハーフモーダル',
         awaitableButton: '連打防止Button',
         awaitableButtonDescription:
-            'ボタンをタップすると、ボタン内でインジケータが回り始めてタップできなくなる。[onPressed]に渡した非同期関数が終了すると、再度タップ可能になる。',
+            '''ボタンをタップすると、ボタン内でインジケータが回り始めてタップできなくなる。[onPressed]に渡した非同期関数が終了すると、再度タップ可能になる。''',
         listOrGridSwitcher: 'List/Grid表示切り替え',
         apiClientPage: 'APIのClientとRepository',
         themeSelector: 'Themeの切り替え',

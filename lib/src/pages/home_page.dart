@@ -13,14 +13,14 @@ import 'theme_selector_page.dart';
 import 'video_player_page.dart';
 
 class HomePage extends HookWidget {
-  HomePage({
+  const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     void navigateToPage(Widget page) {
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+      Navigator.of(context).push<void>(MaterialPageRoute(builder: (_) => page));
     }
 
     return Scaffold(
@@ -33,7 +33,7 @@ class HomePage extends HookWidget {
             floating: true,
             pinned: true,
             snap: true,
-            expandedHeight: 100.0,
+            expandedHeight: 100,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(Localized.of(context).appName),
             ),
@@ -44,8 +44,9 @@ class HomePage extends HookWidget {
               [
                 ListTile(
                   title: Text(Localized.of(context).listAndFadeBar),
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ListAndFadeBar()),
+                  onTap: () => Navigator.of(context).push<void>(
+                    MaterialPageRoute(
+                        builder: (context) => const ListAndFadeBar()),
                   ),
                 ),
                 ListTile(

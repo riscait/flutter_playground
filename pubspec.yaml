@@ -19,11 +19,12 @@ dependencies:
   video_player: ^2.0.2
   shared_preferences: ^2.0.5
   http: ^0.13.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: null
+  build_runner: ^2.0.3
   freezed: ^0.14.1
   json_serializable: ^4.1.0
   pedantic_mono: ^1.11.0+2

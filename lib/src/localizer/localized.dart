@@ -11,5 +11,5 @@ class Localized {
   final Message message;
 
   static Message of(BuildContext context) =>
-      Localizations.of(context, Localized).message;
+      Localizations.of<Localized>(context, Localized)!.message;
 }

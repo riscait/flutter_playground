@@ -48,8 +48,8 @@ class _Cell extends ConsumerWidget {
     final controller = watch(swipableListPageControllerProvider.notifier);
     return Dismissible(
       key: Key('${item.titleLabel}'),
-      background: DeletableBackground(),
-      secondaryBackground: DeletableBackground(),
+      background: const DeletableBackground(),
+      secondaryBackground: const DeletableBackground(),
       onDismissed: (direction) => controller.onDismissed(
         direction: direction,
         index: index,

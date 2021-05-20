@@ -24,7 +24,7 @@ class SwipableListPageController extends StateNotifier<SwipableListPageState> {
   // ---------------------------------------------------------------------------
 
   void _fetchItems() {
-    state = state.copyWith(items: [
+    state = state.copyWith(items: const [
       SwipableListItem(titleLabel: 'A'),
       SwipableListItem(titleLabel: 'B'),
       SwipableListItem(titleLabel: 'C'),
@@ -41,7 +41,7 @@ class SwipableListPageController extends StateNotifier<SwipableListPageState> {
     ScaffoldMessenger.of(_navigatorKey.currentState!.context)
       ..removeCurrentSnackBar()
       ..showSnackBar(SnackBar(
-        content: Text('action'),
+        content: const Text('action'),
         action: SnackBarAction(
           label: 'Undo',
           onPressed: () {

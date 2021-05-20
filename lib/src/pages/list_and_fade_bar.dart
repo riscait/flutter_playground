@@ -11,7 +11,7 @@ final barVisibleProvider = StateProvider((ref) => true);
 
 /// ListViewのスクロール具合によって上部のBarが消えたり現れたりする
 class ListAndFadeBar extends HookWidget {
-  ListAndFadeBar({
+  const ListAndFadeBar({
     Key? key,
   }) : super(key: key);
 

@@ -10,7 +10,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // ビルド時に指定したFlavorを取得
-  final flavorString = const String.fromEnvironment('FLAVOR');
+  const flavorString = String.fromEnvironment('FLAVOR');
   final flavor = Flavor.values.firstWhere((e) => e.key == flavorString);
 
   runApp(

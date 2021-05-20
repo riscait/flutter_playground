@@ -13,7 +13,7 @@ final _githubUserProvider =
     'users/$username',
   ));
   print(response.body);
-  return json.decode(response.body);
+  return json.decode(response.body) as Map<String, Object?>;
 });
 
 class PullToRefreshPage extends StatelessWidget {
@@ -31,7 +31,7 @@ class PullToRefreshPage extends StatelessWidget {
 class _Content extends ConsumerWidget {
   const _Content({Key? key}) : super(key: key);
 
-  final String username = 'Riscait';
+  static const username = 'Riscait';
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {

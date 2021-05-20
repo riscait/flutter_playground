@@ -15,7 +15,7 @@ class ListOrGridSwitcherPage extends HookWidget {
       appBar: AppBar(
         title: Text(Localized.of(context).listOrGridSwitcher),
       ),
-      body: SafeArea(child: const ListOrGrid()),
+      body: const SafeArea(child: ListOrGrid()),
     );
   }
 }

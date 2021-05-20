@@ -43,7 +43,7 @@ class VideoPlayerState with _$VideoPlayerState {
     @Default(false) bool isFullScreen,
 
     /// 動画リスト
-    @Default([]) List<VideoEntity> videoList,
+    @Default(<VideoEntity>[]) List<VideoEntity> videoList,
 
     /// 動画プレイヤー（1動画 = 1プレイヤー）
     VideoPlayerController? videoPlayerController,

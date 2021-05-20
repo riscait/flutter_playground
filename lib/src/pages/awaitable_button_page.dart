@@ -20,7 +20,7 @@ class AwaitableButtonPage extends StatelessWidget {
             AwaitableButton(
               onPressed: () async {
                 print('Start');
-                await Future.delayed(Duration(seconds: 3));
+                await Future<void>.delayed(const Duration(seconds: 3));
                 print('end');
               },
               textLabel: 'START',

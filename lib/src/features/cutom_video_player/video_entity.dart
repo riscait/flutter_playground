@@ -11,7 +11,7 @@ class VideoEntity with _$VideoEntity {
   }) = _VideoEntity;
 }
 
-final stabVideoEntity = VideoEntity(
+const stabVideoEntity = VideoEntity(
   videoUrl:
       'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
   title: 'Video title',

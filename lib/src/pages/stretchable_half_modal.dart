@@ -12,7 +12,7 @@ class StretchableHalfModal extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(Localized.of(context).strechableHalfModal)),
       body: Stack(
-        children: [
+        children: const [
           _HalfModal(),
         ],
       ),
@@ -36,7 +36,7 @@ class _HalfModal extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
           ),
           child: ListView.separated(
             controller: scrollController,

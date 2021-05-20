@@ -55,6 +55,7 @@ class _AwaitableButtonState extends State<AwaitableButton> {
               )),
             ),
         child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
           child: _isExecuting
               ? widget.executingLabel == null
                   ? _Indicator(size: widget.height / 2)
@@ -67,7 +68,6 @@ class _AwaitableButtonState extends State<AwaitableButton> {
                       ],
                     )
               : Text(widget.textLabel),
-          duration: const Duration(milliseconds: 500),
         ),
       ),
     );

@@ -31,7 +31,7 @@ class VideoPlayerArea extends HookWidget {
         aspectRatio: 16 / 9,
         child: Container(
           color: Colors.black,
-          child: OverlayIndicator(),
+          child: const OverlayIndicator(),
         ),
       );
     }
@@ -261,9 +261,9 @@ class PlayOverlayView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IgnorePointer(
+    return const IgnorePointer(
       child: Center(
-        child: const Icon(
+        child: Icon(
           Icons.play_circle_fill_rounded,
           color: Colors.white,
           size: 64,
