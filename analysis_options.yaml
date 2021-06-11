@@ -5,7 +5,3 @@ analyzer:
     - lib/generated_*.dart
     - lib/**/*.g.dart
     - lib/**/*.freezed.dart
-linter:
- rules:
-   # pubspec.yaml/dependencies で flutter sdk を一番上に書きたいため
-   sort_pub_dependencies: false
