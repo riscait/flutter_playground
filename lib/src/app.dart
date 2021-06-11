@@ -39,14 +39,14 @@ class App extends HookWidget with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = useProvider(themeSelectorProvider);
     useEffect(effect, const []);
 
     return MaterialApp(
       navigatorKey: useProvider(navigatorKeyProvider),
       title: 'Flutter Playground by Riscait',
-      theme: themeMode == ThemeMode.dark ? ThemeData.dark() : ThemeData.light(),
-      darkTheme: themeMode == ThemeMode.system ? ThemeData.dark() : null,
+      themeMode: useProvider(themeSelectorProvider),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       home: const HomePage(),
       localizationsDelegates: const [
         LocalizedDelegate(),
