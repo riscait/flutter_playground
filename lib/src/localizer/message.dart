@@ -19,6 +19,7 @@ class Message with _$Message {
     required String themeSelector,
     required String pullToRefresh,
     required String swipableList,
+    required String riveAnimation,
   }) = _Message;
 
   factory Message.of(Locale locale) {
@@ -45,6 +46,7 @@ class Message with _$Message {
         themeSelector: 'Theme Selector',
         pullToRefresh: 'Pull-to-refresh',
         swipableList: 'Swipable List',
+        riveAnimation: 'Rive Animations',
       );
 
   factory Message.ja() => const Message(
@@ -61,5 +63,6 @@ class Message with _$Message {
         themeSelector: 'Themeの切り替え',
         pullToRefresh: '引っ張って更新',
         swipableList: 'スワイプ可能リストアイテム',
+        riveAnimation: 'Rive アニメ デモ',
       );
 }

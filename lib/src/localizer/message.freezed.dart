@@ -28,7 +28,8 @@ class _$MessageTearOff {
       required String apiClientPage,
       required String themeSelector,
       required String pullToRefresh,
-      required String swipableList}) {
+      required String swipableList,
+      required String riveAnimation}) {
     return _Message(
       appName: appName,
       homePageTitle: homePageTitle,
@@ -42,6 +43,7 @@ class _$MessageTearOff {
       themeSelector: themeSelector,
       pullToRefresh: pullToRefresh,
       swipableList: swipableList,
+      riveAnimation: riveAnimation,
     );
   }
 }
@@ -63,6 +65,7 @@ mixin _$Message {
   String get themeSelector => throw _privateConstructorUsedError;
   String get pullToRefresh => throw _privateConstructorUsedError;
   String get swipableList => throw _privateConstructorUsedError;
+  String get riveAnimation => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MessageCopyWith<Message> get copyWith => throw _privateConstructorUsedError;
@@ -84,7 +87,8 @@ abstract class $MessageCopyWith<$Res> {
       String apiClientPage,
       String themeSelector,
       String pullToRefresh,
-      String swipableList});
+      String swipableList,
+      String riveAnimation});
 }
 
 /// @nodoc
@@ -109,6 +113,7 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
     Object? themeSelector = freezed,
     Object? pullToRefresh = freezed,
     Object? swipableList = freezed,
+    Object? riveAnimation = freezed,
   }) {
     return _then(_value.copyWith(
       appName: appName == freezed
@@ -159,6 +164,10 @@ class _$MessageCopyWithImpl<$Res> implements $MessageCopyWith<$Res> {
           ? _value.swipableList
           : swipableList // ignore: cast_nullable_to_non_nullable
               as String,
+      riveAnimation: riveAnimation == freezed
+          ? _value.riveAnimation
+          : riveAnimation // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -180,7 +189,8 @@ abstract class _$MessageCopyWith<$Res> implements $MessageCopyWith<$Res> {
       String apiClientPage,
       String themeSelector,
       String pullToRefresh,
-      String swipableList});
+      String swipableList,
+      String riveAnimation});
 }
 
 /// @nodoc
@@ -206,6 +216,7 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
     Object? themeSelector = freezed,
     Object? pullToRefresh = freezed,
     Object? swipableList = freezed,
+    Object? riveAnimation = freezed,
   }) {
     return _then(_Message(
       appName: appName == freezed
@@ -256,11 +267,16 @@ class __$MessageCopyWithImpl<$Res> extends _$MessageCopyWithImpl<$Res>
           ? _value.swipableList
           : swipableList // ignore: cast_nullable_to_non_nullable
               as String,
+      riveAnimation: riveAnimation == freezed
+          ? _value.riveAnimation
+          : riveAnimation // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_Message implements _Message {
   const _$_Message(
       {required this.appName,
@@ -274,7 +290,8 @@ class _$_Message implements _Message {
       required this.apiClientPage,
       required this.themeSelector,
       required this.pullToRefresh,
-      required this.swipableList});
+      required this.swipableList,
+      required this.riveAnimation});
 
   @override
   final String appName;
@@ -300,10 +317,12 @@ class _$_Message implements _Message {
   final String pullToRefresh;
   @override
   final String swipableList;
+  @override
+  final String riveAnimation;
 
   @override
   String toString() {
-    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher, apiClientPage: $apiClientPage, themeSelector: $themeSelector, pullToRefresh: $pullToRefresh, swipableList: $swipableList)';
+    return 'Message(appName: $appName, homePageTitle: $homePageTitle, listAndFadeBar: $listAndFadeBar, customVideoPlayer: $customVideoPlayer, strechableHalfModal: $strechableHalfModal, awaitableButton: $awaitableButton, awaitableButtonDescription: $awaitableButtonDescription, listOrGridSwitcher: $listOrGridSwitcher, apiClientPage: $apiClientPage, themeSelector: $themeSelector, pullToRefresh: $pullToRefresh, swipableList: $swipableList, riveAnimation: $riveAnimation)';
   }
 
   @override
@@ -347,7 +366,10 @@ class _$_Message implements _Message {
                     .equals(other.pullToRefresh, pullToRefresh)) &&
             (identical(other.swipableList, swipableList) ||
                 const DeepCollectionEquality()
-                    .equals(other.swipableList, swipableList)));
+                    .equals(other.swipableList, swipableList)) &&
+            (identical(other.riveAnimation, riveAnimation) ||
+                const DeepCollectionEquality()
+                    .equals(other.riveAnimation, riveAnimation)));
   }
 
   @override
@@ -364,7 +386,8 @@ class _$_Message implements _Message {
       const DeepCollectionEquality().hash(apiClientPage) ^
       const DeepCollectionEquality().hash(themeSelector) ^
       const DeepCollectionEquality().hash(pullToRefresh) ^
-      const DeepCollectionEquality().hash(swipableList);
+      const DeepCollectionEquality().hash(swipableList) ^
+      const DeepCollectionEquality().hash(riveAnimation);
 
   @JsonKey(ignore: true)
   @override
@@ -385,7 +408,8 @@ abstract class _Message implements Message {
       required String apiClientPage,
       required String themeSelector,
       required String pullToRefresh,
-      required String swipableList}) = _$_Message;
+      required String swipableList,
+      required String riveAnimation}) = _$_Message;
 
   @override
   String get appName => throw _privateConstructorUsedError;
@@ -411,6 +435,8 @@ abstract class _Message implements Message {
   String get pullToRefresh => throw _privateConstructorUsedError;
   @override
   String get swipableList => throw _privateConstructorUsedError;
+  @override
+  String get riveAnimation => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$MessageCopyWith<_Message> get copyWith =>

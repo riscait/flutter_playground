@@ -18,6 +18,7 @@ dependencies:
   hooks_riverpod: ^0.14.0
   http: ^0.13.1
   intl: ^0.17.0
+  rive: ^0.7.12
   shared_preferences: ^2.0.5
   video_player: ^2.0.2
 
@@ -34,3 +35,4 @@ flutter:
 
   assets:
     - assets/images/pakutaso/
+    - assets/animations/
