@@ -17,12 +17,12 @@ class ApiClientPage extends StatelessWidget {
   }
 }
 
-class _Content extends HookWidget {
+class _Content extends HookConsumerWidget {
   const _Content({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final repository = useProvider(apiRepositoryProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final repository = ref.watch(apiRepositoryProvider);
     final future = useMemoized(() => repository.fetchUser('riscait'));
     final snapshot = useFuture(future, initialData: null);
     if (snapshot.hasError) {

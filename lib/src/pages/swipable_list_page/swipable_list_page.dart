@@ -9,8 +9,8 @@ class SwipableListPage extends ConsumerWidget {
   const SwipableListPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final items = watch(swipableListPageControllerProvider).items;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final items = ref.watch(swipableListPageControllerProvider).items;
     return Scaffold(
       appBar: AppBar(
         title: Text(Localized.of(context).swipableList),
@@ -44,8 +44,8 @@ class _Cell extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final controller = watch(swipableListPageControllerProvider.notifier);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(swipableListPageControllerProvider.notifier);
     return Dismissible(
       key: Key('${item.titleLabel}'),
       background: const DeletableBackground(),

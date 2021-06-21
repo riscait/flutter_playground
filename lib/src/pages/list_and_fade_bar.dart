@@ -10,13 +10,13 @@ final list = List.generate(20, (index) => ListTile(title: Text('$index')));
 final barVisibleProvider = StateProvider((ref) => true);
 
 /// ListViewのスクロール具合によって上部のBarが消えたり現れたりする
-class ListAndFadeBar extends HookWidget {
+class ListAndFadeBar extends HookConsumerWidget {
   const ListAndFadeBar({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // HooksによるScrollControllerの生成・破棄
     final scrollController = useScrollController();
     // スクロールの状態を購読する
@@ -27,20 +27,20 @@ class ListAndFadeBar extends HookWidget {
       final current =
           scrollController.offset / scrollController.position.maxScrollExtent;
       // 現在表示中なら `true`
-      final _barVisible = context.read(barVisibleProvider).state;
+      final _barVisible = ref.read(barVisibleProvider).state;
 
       if (_barVisible &&
           current > threshold + 0.1 &&
           scrollController.position.userScrollDirection ==
               ScrollDirection.reverse) {
         // 現在表示中かつ、スクロールを進めて閾値を越えたら非表示にする
-        context.read(barVisibleProvider).state = false;
+        ref.read(barVisibleProvider).state = false;
       }
       if (!_barVisible &&
           scrollController.position.userScrollDirection ==
               ScrollDirection.forward) {
         // 現在非表示かつ、上方向にスクロールしたら再表示する
-        context.read(barVisibleProvider).state = true;
+        ref.read(barVisibleProvider).state = true;
       }
     }
 
@@ -51,7 +51,7 @@ class ListAndFadeBar extends HookWidget {
     }, [scrollController]);
 
     // Barの表示状態
-    final barVisible = useProvider(barVisibleProvider).state;
+    final barVisible = ref.watch(barVisibleProvider).state;
 
     return Scaffold(
       appBar: AppBar(
@@ -86,7 +86,7 @@ class ListAndFadeBar extends HookWidget {
 final searchTextProvider = StateProvider((ref) => '');
 
 /// Fade in / Fade out させたい Bar
-class _Bar extends HookWidget {
+class _Bar extends HookConsumerWidget {
   const _Bar({
     Key? key,
   }) : super(key: key);
@@ -94,9 +94,9 @@ class _Bar extends HookWidget {
   static const barSize = 44.0;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // 検索文字列の入力状態
-    final searchText = useProvider(searchTextProvider).state;
+    final searchText = ref.watch(searchTextProvider).state;
     // TextField用のControllerをHooksで生成・破棄管理
     final controller = useTextEditingController(text: searchText);
     return Padding(
@@ -106,7 +106,7 @@ class _Bar extends HookWidget {
         child: TextField(
           controller: controller,
           textInputAction: TextInputAction.done,
-          onChanged: (text) => context.read(searchTextProvider).state = text,
+          onChanged: (text) => ref.read(searchTextProvider).state = text,
           decoration: InputDecoration(
             hintText: '検索',
             filled: true,
@@ -117,7 +117,7 @@ class _Bar extends HookWidget {
                 : IconButton(
                     icon: const Icon(Icons.clear),
                     onPressed: () {
-                      context.read(searchTextProvider).state = '';
+                      ref.read(searchTextProvider).state = '';
                       controller.clear();
                     },
                   ),

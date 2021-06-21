@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 import '../localizer/localizer.dart';
 import 'api_client_page.dart';
@@ -13,7 +12,7 @@ import 'swipable_list_page/swipable_list_page.dart';
 import 'theme_selector_page.dart';
 import 'video_player_page.dart';
 
-class HomePage extends HookWidget {
+class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
   }) : super(key: key);

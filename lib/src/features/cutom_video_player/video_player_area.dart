@@ -12,14 +12,14 @@ import 'video_player_state.dart';
 /// 動画プレイヤーに表示するシークバーの値の位置を提供する
 final videoPositionSecondsProvider = StateProvider((ref) => 0.0);
 
-class VideoPlayerArea extends HookWidget {
+class VideoPlayerArea extends ConsumerWidget {
   const VideoPlayerArea({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final playerState = useProvider(videoPlayerControllerProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final playerState = ref.watch(videoPlayerControllerProvider);
     final isFullScreen = playerState.isFullScreen;
     final isReady = playerState.playingStatus.isReady;
     final isPlaying = playerState.playingStatus == PlayingStatus.playing;
@@ -56,7 +56,7 @@ class VideoPlayerArea extends HookWidget {
             // プレイヤー部分全体のタップイベント
             GestureDetector(
               onTap: () => _onTapVideo(
-                context,
+                ref,
                 playerState.playingStatus,
               ),
               child: AspectRatio(
@@ -92,7 +92,7 @@ class VideoPlayerArea extends HookWidget {
                         left: 8,
                         bottom: 8,
                         child: TextButton.icon(
-                          onPressed: context
+                          onPressed: ref
                               .read(videoPlayerControllerProvider.notifier)
                               .replay,
                           icon: const Icon(
@@ -127,10 +127,10 @@ class VideoPlayerArea extends HookWidget {
 
   /// プレイヤー全体のタップイベント
   void _onTapVideo(
-    BuildContext context,
+    WidgetRef ref,
     PlayingStatus playingStatus,
   ) {
-    final controller = context.read(videoPlayerControllerProvider.notifier);
+    final controller = ref.read(videoPlayerControllerProvider.notifier);
     switch (playingStatus) {
       case PlayingStatus.ready:
         controller.play();
@@ -164,20 +164,20 @@ class VideoPlayerArea extends HookWidget {
 }
 
 /// タップジェスチャーを検知して送り・戻しを実行する
-class ReplayAndForwardTapDetector extends HookWidget {
+class ReplayAndForwardTapDetector extends ConsumerWidget {
   const ReplayAndForwardTapDetector({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
           child: SeekFeedbackTransition(
             isStartSide: true,
-            execute: context
+            execute: ref
                 .read(videoPlayerControllerProvider.notifier)
                 .replay10Seconds,
           ),
@@ -185,7 +185,7 @@ class ReplayAndForwardTapDetector extends HookWidget {
         Expanded(
           child: SeekFeedbackTransition(
             isStartSide: false,
-            execute: context
+            execute: ref
                 .read(videoPlayerControllerProvider.notifier)
                 .forward10Seconds,
           ),
@@ -196,7 +196,7 @@ class ReplayAndForwardTapDetector extends HookWidget {
 }
 
 /// 送り・戻しをアニメーションでフィードバックするための表示
-class SeekFeedbackTransition extends HookWidget {
+class SeekFeedbackTransition extends HookConsumerWidget {
   const SeekFeedbackTransition({
     Key? key,
     this.isStartSide = true,
@@ -209,7 +209,7 @@ class SeekFeedbackTransition extends HookWidget {
   static const radius = Radius.elliptical(270, 360);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final animationController =
         useAnimationController(duration: const Duration(milliseconds: 500));
     return GestureDetector(
@@ -254,13 +254,13 @@ class SeekFeedbackTransition extends HookWidget {
 }
 
 /// 再生できることを示すView
-class PlayOverlayView extends HookWidget {
+class PlayOverlayView extends ConsumerWidget {
   const PlayOverlayView({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return const IgnorePointer(
       child: Center(
         child: Icon(
@@ -274,13 +274,13 @@ class PlayOverlayView extends HookWidget {
 }
 
 /// 再生ボタンや動画時間などのコントロールを担うエリア
-class BottomControlView extends HookWidget {
+class BottomControlView extends ConsumerWidget {
   const BottomControlView({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       verticalDirection: VerticalDirection.up,
       children: [
@@ -292,13 +292,12 @@ class BottomControlView extends HookWidget {
                 Icons.play_arrow,
                 color: Colors.white,
               ),
-              onPressed:
-                  context.read(videoPlayerControllerProvider.notifier).play,
+              onPressed: ref.read(videoPlayerControllerProvider.notifier).play,
             ),
             const _DurationText(),
             const Spacer(),
             TextButton.icon(
-              onPressed: context
+              onPressed: ref
                   .read(videoPlayerControllerProvider.notifier)
                   .replay10Seconds,
               icon: const Icon(
@@ -314,7 +313,7 @@ class BottomControlView extends HookWidget {
               ),
             ),
             TextButton.icon(
-              onPressed: context
+              onPressed: ref
                   .read(videoPlayerControllerProvider.notifier)
                   .forward10Seconds,
               label: const Icon(
@@ -334,7 +333,7 @@ class BottomControlView extends HookWidget {
               icon: const Icon(Icons.fullscreen),
               alignment: Alignment.centerRight,
               color: Colors.white,
-              onPressed: context
+              onPressed: ref
                   .read(videoPlayerControllerProvider.notifier)
                   .toggleFullScreen,
             ),
@@ -350,25 +349,24 @@ class BottomControlView extends HookWidget {
 }
 
 /// 次の動画を再生するボタン
-class _NextVideoButton extends HookWidget {
+class _NextVideoButton extends ConsumerWidget {
   const _NextVideoButton({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final currentVideoIndex = useProvider(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentVideoIndex = ref.watch(
         videoPlayerControllerProvider.select((s) => s.currentVideoIndex));
     final videoList =
-        useProvider(videoPlayerControllerProvider.select((s) => s.videoList));
+        ref.watch(videoPlayerControllerProvider.select((s) => s.videoList));
     final numberOfVideos = videoList.length;
     if (numberOfVideos <= currentVideoIndex) {
       // 次の動画がないならこのボタンは表示ししない
       return const SizedBox();
     }
     return GestureDetector(
-      onTap: () =>
-          context.read(videoPlayerControllerProvider.notifier).playNext(),
+      onTap: () => ref.read(videoPlayerControllerProvider.notifier).playNext(),
       child: Container(
         padding: const EdgeInsets.fromLTRB(8, 2, 8, 4),
         color: Colors.black87,
@@ -396,14 +394,14 @@ class _NextVideoButton extends HookWidget {
 /// Durationを以下の形式の文字列に変換して表示するためのWidget
 /// 時間があるときは `1:05:30` (時間：分：秒)
 /// 時間がないときは `5:30` （分：秒）
-class _DurationText extends HookWidget {
+class _DurationText extends ConsumerWidget {
   const _DurationText({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final videoPlayerController = useProvider(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final videoPlayerController = ref.watch(
         videoPlayerControllerProvider.select((s) => s.videoPlayerController));
-    final currentSeek = useProvider(videoPositionSecondsProvider).state;
+    final currentSeek = ref.watch(videoPositionSecondsProvider).state;
     final videoDuration =
         videoPlayerController?.value.duration ?? Duration.zero;
     return Text(
@@ -435,16 +433,16 @@ class _DurationText extends HookWidget {
 }
 
 /// 動画の再生位置を示す線形インジケータ
-class _SeekBar extends HookWidget {
+class _SeekBar extends ConsumerWidget {
   const _SeekBar({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final duration = useProvider(videoPlayerControllerProvider
+  Widget build(BuildContext context, WidgetRef ref) {
+    final duration = ref.watch(videoPlayerControllerProvider
             .select((state) => state.videoPlayerController?.value.duration)) ??
         Duration.zero;
     final max = duration.inSeconds.toDouble();
-    final current = useProvider(videoPositionSecondsProvider).state;
+    final current = ref.watch(videoPositionSecondsProvider).state;
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
         trackHeight: 2,
@@ -461,11 +459,10 @@ class _SeekBar extends HookWidget {
         onChangeStart: (positon) => print('Start Sliding'),
         // シークバーをドラッグして移動させたらStateProviderに反映させる
         onChanged: (position) =>
-            context.read(videoPositionSecondsProvider).state = position,
+            ref.read(videoPositionSecondsProvider).state = position,
         // Sliderで位置を変更し終わったら、再生位置を変更して
-        onChangeEnd: (position) => context
-            .read(videoPlayerControllerProvider.notifier)
-            .seekTo(position),
+        onChangeEnd: (position) =>
+            ref.read(videoPlayerControllerProvider.notifier).seekTo(position),
         // divisions: 1,
       ),
     );

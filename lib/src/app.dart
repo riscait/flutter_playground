@@ -8,7 +8,7 @@ import 'localizer/localizer.dart';
 import 'pages/home_page.dart';
 import 'top_level_providers/navigator_key.dart';
 
-class App extends HookWidget with WidgetsBindingObserver {
+class App extends HookConsumerWidget with WidgetsBindingObserver {
   Dispose effect() {
     WidgetsBinding.instance!.addObserver(this);
     return onDispose;
@@ -38,13 +38,13 @@ class App extends HookWidget with WidgetsBindingObserver {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     useEffect(effect, const []);
 
     return MaterialApp(
-      navigatorKey: useProvider(navigatorKeyProvider),
+      navigatorKey: ref.watch(navigatorKeyProvider),
       title: 'Flutter Playground by Riscait',
-      themeMode: useProvider(themeSelectorProvider),
+      themeMode: ref.watch(themeSelectorProvider),
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       home: const HomePage(),
