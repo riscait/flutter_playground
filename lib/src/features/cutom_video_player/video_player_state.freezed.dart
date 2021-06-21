@@ -19,7 +19,7 @@ class _$VideoPlayerStateTearOff {
   _VideoPlayerState call(
       {PlayingStatus playingStatus = PlayingStatus.preparing,
       bool isFullScreen = false,
-      List<VideoEntity> videoList = const [],
+      List<VideoEntity> videoList = const <VideoEntity>[],
       VideoPlayerController? videoPlayerController,
       int currentVideoIndex = 0}) {
     return _VideoPlayerState(
@@ -173,13 +173,14 @@ class __$VideoPlayerStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_VideoPlayerState
     with DiagnosticableTreeMixin
     implements _VideoPlayerState {
   const _$_VideoPlayerState(
       {this.playingStatus = PlayingStatus.preparing,
       this.isFullScreen = false,
-      this.videoList = const [],
+      this.videoList = const <VideoEntity>[],
       this.videoPlayerController,
       this.currentVideoIndex = 0});
 
@@ -193,7 +194,7 @@ class _$_VideoPlayerState
 
   /// 全画面表示フラグ
   final bool isFullScreen;
-  @JsonKey(defaultValue: const [])
+  @JsonKey(defaultValue: const <VideoEntity>[])
   @override
 
   /// 動画リスト

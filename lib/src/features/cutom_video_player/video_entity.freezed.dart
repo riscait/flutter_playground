@@ -125,6 +125,7 @@ class __$VideoEntityCopyWithImpl<$Res> extends _$VideoEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_VideoEntity implements _VideoEntity {
   const _$_VideoEntity(
       {required this.videoUrl, required this.title, required this.description});

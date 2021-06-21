@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$SwipableListPageStateTearOff {
   const _$SwipableListPageStateTearOff();
 
-  _SwipableListPageState call({List<SwipableListItem> items = const []}) {
+  _SwipableListPageState call(
+      {List<SwipableListItem> items = const <SwipableListItem>[]}) {
     return _SwipableListPageState(
       items: items,
     );
@@ -101,12 +102,13 @@ class __$SwipableListPageStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SwipableListPageState
     with DiagnosticableTreeMixin
     implements _SwipableListPageState {
-  const _$_SwipableListPageState({this.items = const []});
+  const _$_SwipableListPageState({this.items = const <SwipableListItem>[]});
 
-  @JsonKey(defaultValue: const [])
+  @JsonKey(defaultValue: const <SwipableListItem>[])
   @override
 
   /// 読み込み中かどうか
@@ -246,6 +248,7 @@ class __$SwipableListItemCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$_SwipableListItem
     with DiagnosticableTreeMixin
     implements _SwipableListItem {

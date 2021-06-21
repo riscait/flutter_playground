@@ -216,9 +216,9 @@ class __$GitHubUserEntityCopyWithImpl<$Res>
   }
 }
 
-@JsonSerializable(fieldRename: FieldRename.snake)
-
 /// @nodoc
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$_GitHubUserEntity
     with DiagnosticableTreeMixin
     implements _GitHubUserEntity {
