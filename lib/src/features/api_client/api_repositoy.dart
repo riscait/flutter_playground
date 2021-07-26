@@ -6,13 +6,13 @@ import 'github_user_entity.dart';
 final apiRepositoryProvider = Provider((ref) => ApiRepository(ref.read));
 
 class ApiRepository {
-  ApiRepository(this._read);
+  const ApiRepository(this._read);
 
   final Reader _read;
-  late final _api = _read(apiClientProvider);
+  ApiClient get _api => _read(apiClientProvider);
 
-  Future<GitHubUserEntity> fetchUser(String user) async {
-    final response = await _api.get<Map<String, Object?>>('users/$user');
+  Future<GitHubUserEntity> fetchUser(String username) async {
+    final response = await _api.get<Map<String, Object?>>('users/$username');
     return GitHubUserEntity.fromJson(response.data!);
   }
 }
