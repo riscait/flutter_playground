@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../features/theme_selector/theme_selector.dart';
 import '../localizer/localizer.dart';
 
 class ThemeSelectorPage extends StatelessWidget {
-  const ThemeSelectorPage();
+  const ThemeSelectorPage({Key? key}) : super(key: key);
 
   static const String routeName = '/theme-selection';
 
@@ -21,13 +20,13 @@ class ThemeSelectorPage extends StatelessWidget {
   }
 }
 
-class ThemeListView extends HookWidget {
-  const ThemeListView();
+class ThemeListView extends ConsumerWidget {
+  const ThemeListView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final themeSelector = useProvider(themeSelectorProvider.notifier);
-    final currentThemeMode = useProvider(themeSelectorProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeSelector = ref.watch(themeSelectorProvider.notifier);
+    final currentThemeMode = ref.watch(themeSelectorProvider);
     return ListView.builder(
       itemCount: ThemeMode.values.length,
       itemBuilder: (_, index) {

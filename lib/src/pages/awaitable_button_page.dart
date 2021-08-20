@@ -19,9 +19,9 @@ class AwaitableButtonPage extends StatelessWidget {
             Text(Localized.of(context).awaitableButtonDescription),
             AwaitableButton(
               onPressed: () async {
-                print('Start');
+                debugPrint('Start');
                 await Future<void>.delayed(const Duration(seconds: 3));
-                print('end');
+                debugPrint('end');
               },
               textLabel: 'START',
               executingLabel: 'Loading...',

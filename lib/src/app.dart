@@ -8,7 +8,9 @@ import 'localizer/localizer.dart';
 import 'pages/home_page.dart';
 import 'top_level_providers/navigator_key.dart';
 
-class App extends HookWidget with WidgetsBindingObserver {
+class App extends HookConsumerWidget with WidgetsBindingObserver {
+  const App({Key? key}) : super(key: key);
+
   Dispose effect() {
     WidgetsBinding.instance!.addObserver(this);
     return onDispose;
@@ -22,29 +24,29 @@ class App extends HookWidget with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
-        print('Resumed App');
+        debugPrint('Resumed App');
         break;
       case AppLifecycleState.inactive:
-        print('Inactive App');
+        debugPrint('Inactive App');
         break;
       case AppLifecycleState.paused:
-        print('Paused App');
+        debugPrint('Paused App');
         break;
       case AppLifecycleState.detached:
-        print('Detached App');
+        debugPrint('Detached App');
         break;
     }
     super.didChangeAppLifecycleState(state);
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     useEffect(effect, const []);
 
     return MaterialApp(
-      navigatorKey: useProvider(navigatorKeyProvider),
+      navigatorKey: ref.watch(navigatorKeyProvider),
       title: 'Flutter Playground by Riscait',
-      themeMode: useProvider(themeSelectorProvider),
+      themeMode: ref.watch(themeSelectorProvider),
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       home: const HomePage(),

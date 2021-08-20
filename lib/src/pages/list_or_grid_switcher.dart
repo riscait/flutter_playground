@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../localizer/localizer.dart';
 
-class ListOrGridSwitcherPage extends HookWidget {
+class ListOrGridSwitcherPage extends ConsumerWidget {
   const ListOrGridSwitcherPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text(Localized.of(context).listOrGridSwitcher),
@@ -27,14 +26,14 @@ enum _DisplayMode {
 
 final displayModeProvider = StateProvider((ref) => _DisplayMode.list);
 
-class ListOrGrid extends HookWidget {
+class ListOrGrid extends ConsumerWidget {
   const ListOrGrid({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final displayMode = useProvider(displayModeProvider).state;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final displayMode = ref.watch(displayModeProvider).state;
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
@@ -47,14 +46,14 @@ class ListOrGrid extends HookWidget {
   }
 }
 
-class _ModeSelector extends HookWidget {
+class _ModeSelector extends ConsumerWidget {
   const _ModeSelector({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final displayMode = useProvider(displayModeProvider).state;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final displayMode = ref.watch(displayModeProvider).state;
     return Container(
       padding: const EdgeInsets.only(right: 16, bottom: 16),
       child: Row(
@@ -64,7 +63,7 @@ class _ModeSelector extends HookWidget {
             label: const Icon(Icons.list_alt),
             selected: displayMode == _DisplayMode.list,
             onSelected: (isOn) => isOn
-                ? context.read(displayModeProvider).state = _DisplayMode.list
+                ? ref.read(displayModeProvider).state = _DisplayMode.list
                 : null,
           ),
           const SizedBox(width: 8),
@@ -72,7 +71,7 @@ class _ModeSelector extends HookWidget {
             label: const Icon(Icons.grid_on),
             selected: displayMode == _DisplayMode.grid,
             onSelected: (isOn) => isOn
-                ? context.read(displayModeProvider).state = _DisplayMode.grid
+                ? ref.read(displayModeProvider).state = _DisplayMode.grid
                 : null,
           ),
         ],

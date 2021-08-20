@@ -5,3 +5,5 @@ analyzer:
     - lib/generated_*.dart
     - lib/**/*.g.dart
     - lib/**/*.freezed.dart
+  errors:
+    invalid_annotation_target: ignore

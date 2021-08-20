@@ -12,7 +12,7 @@ final _githubUserProvider =
     'api.github.com',
     'users/$username',
   ));
-  print(response.body);
+  debugPrint(response.body);
   return json.decode(response.body) as Map<String, Object?>;
 });
 
@@ -34,32 +34,33 @@ class _Content extends ConsumerWidget {
   static const username = 'Riscait';
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    return watch(_githubUserProvider(username)).when(
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stack) => Center(child: Text('Error: $error, $stack')),
-      data: (user) {
-        return RefreshIndicator(
-          onRefresh: () => context.refresh(_githubUserProvider(username)),
-          child: ListView(
-            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-            children: [
-              ListTile(
-                title: const Text('login'),
-                subtitle: Text('${user['login'] ?? 'none'}'),
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ref.watch(_githubUserProvider(username)).when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, stack) => Center(child: Text('Error: $error, $stack')),
+          data: (user) {
+            return RefreshIndicator(
+              onRefresh: () async => ref.refresh(_githubUserProvider(username)),
+              child: ListView(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                children: [
+                  ListTile(
+                    title: const Text('login'),
+                    subtitle: Text('${user['login'] ?? 'none'}'),
+                  ),
+                  ListTile(
+                    title: const Text('id'),
+                    subtitle: Text('${user['id'] ?? 'none'}'),
+                  ),
+                  ListTile(
+                    title: const Text('html_url'),
+                    subtitle: Text('${user['html_url'] ?? 'none'}'),
+                  ),
+                ],
               ),
-              ListTile(
-                title: const Text('id'),
-                subtitle: Text('${user['id'] ?? 'none'}'),
-              ),
-              ListTile(
-                title: const Text('html_url'),
-                subtitle: Text('${user['html_url'] ?? 'none'}'),
-              ),
-            ],
-          ),
+            );
+          },
         );
-      },
-    );
   }
 }

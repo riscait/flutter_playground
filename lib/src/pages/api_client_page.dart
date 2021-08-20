@@ -17,12 +17,12 @@ class ApiClientPage extends StatelessWidget {
   }
 }
 
-class _Content extends HookWidget {
+class _Content extends HookConsumerWidget {
   const _Content({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final repository = useProvider(apiRepositoryProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final repository = ref.watch(apiRepositoryProvider);
     final future = useMemoized(() => repository.fetchUser('riscait'));
     final snapshot = useFuture(future, initialData: null);
     if (snapshot.hasError) {
@@ -37,7 +37,7 @@ class _Content extends HookWidget {
       children: [
         ListTile(
           title: const Text('login'),
-          subtitle: Text('${user.login}'),
+          subtitle: Text(user.login),
         ),
         ListTile(
           title: const Text('id'),
@@ -45,7 +45,7 @@ class _Content extends HookWidget {
         ),
         ListTile(
           title: const Text('html_url'),
-          subtitle: Text('${user.htmlUrl}'),
+          subtitle: Text(user.htmlUrl),
         ),
       ],
     );

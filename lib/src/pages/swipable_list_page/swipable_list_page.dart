@@ -9,8 +9,8 @@ class SwipableListPage extends ConsumerWidget {
   const SwipableListPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final items = watch(swipableListPageControllerProvider).items;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final items = ref.watch(swipableListPageControllerProvider).items;
     return Scaffold(
       appBar: AppBar(
         title: Text(Localized.of(context).swipableList),
@@ -39,15 +39,15 @@ class _Cell extends ConsumerWidget {
   final SwipableListItem item;
 
   Future<bool?> confirmDismiss(DismissDirection direction) async {
-    print('confirmDismiss!!!');
+    debugPrint('confirmDismiss!!!');
     return true;
   }
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final controller = watch(swipableListPageControllerProvider.notifier);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(swipableListPageControllerProvider.notifier);
     return Dismissible(
-      key: Key('${item.titleLabel}'),
+      key: Key(item.titleLabel),
       background: const DeletableBackground(),
       secondaryBackground: const DeletableBackground(),
       onDismissed: (direction) => controller.onDismissed(
@@ -57,7 +57,7 @@ class _Cell extends ConsumerWidget {
       ),
       confirmDismiss: confirmDismiss,
       child: ListTile(
-        title: Text('${item.titleLabel}'),
+        title: Text(item.titleLabel),
       ),
     );
   }
@@ -69,7 +69,7 @@ class DeletableBackground extends StatelessWidget {
   const DeletableBackground({
     Key? key,
     this.label = 'Delete',
-    this.margin = const EdgeInsets.all(0),
+    this.margin = EdgeInsets.zero,
     this.alignment = Alignment.centerLeft,
     this.borderRadius,
   }) : super(key: key);
