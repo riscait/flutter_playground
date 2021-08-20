@@ -37,7 +37,7 @@ class _Content extends HookConsumerWidget {
       children: [
         ListTile(
           title: const Text('login'),
-          subtitle: Text('${user.login}'),
+          subtitle: Text(user.login),
         ),
         ListTile(
           title: const Text('id'),
@@ -45,7 +45,7 @@ class _Content extends HookConsumerWidget {
         ),
         ListTile(
           title: const Text('html_url'),
-          subtitle: Text('${user.htmlUrl}'),
+          subtitle: Text(user.htmlUrl),
         ),
       ],
     );

@@ -9,6 +9,8 @@ import 'pages/home_page.dart';
 import 'top_level_providers/navigator_key.dart';
 
 class App extends HookConsumerWidget with WidgetsBindingObserver {
+  const App({Key? key}) : super(key: key);
+
   Dispose effect() {
     WidgetsBinding.instance!.addObserver(this);
     return onDispose;
@@ -22,16 +24,16 @@ class App extends HookConsumerWidget with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
-        print('Resumed App');
+        debugPrint('Resumed App');
         break;
       case AppLifecycleState.inactive:
-        print('Inactive App');
+        debugPrint('Inactive App');
         break;
       case AppLifecycleState.paused:
-        print('Paused App');
+        debugPrint('Paused App');
         break;
       case AppLifecycleState.detached:
-        print('Detached App');
+        debugPrint('Detached App');
         break;
     }
     super.didChangeAppLifecycleState(state);

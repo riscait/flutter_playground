@@ -5,7 +5,7 @@ import '../features/theme_selector/theme_selector.dart';
 import '../localizer/localizer.dart';
 
 class ThemeSelectorPage extends StatelessWidget {
-  const ThemeSelectorPage();
+  const ThemeSelectorPage({Key? key}) : super(key: key);
 
   static const String routeName = '/theme-selection';
 
@@ -21,7 +21,7 @@ class ThemeSelectorPage extends StatelessWidget {
 }
 
 class ThemeListView extends ConsumerWidget {
-  const ThemeListView();
+  const ThemeListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

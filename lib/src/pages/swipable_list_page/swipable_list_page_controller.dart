@@ -36,7 +36,7 @@ class SwipableListPageController extends StateNotifier<SwipableListPageState> {
     required int index,
     required SwipableListItem item,
   }) {
-    print('onDismissed!!!');
+    debugPrint('onDismissed!!!');
     state = state.copyWith(items: state.items..removeAt(index));
     ScaffoldMessenger.of(_navigatorKey.currentState!.context)
       ..removeCurrentSnackBar()

@@ -204,7 +204,7 @@ class SeekFeedbackTransition extends HookConsumerWidget {
   }) : super(key: key);
 
   final bool isStartSide;
-  final Function execute;
+  final VoidCallback execute;
 
   static const radius = Radius.elliptical(270, 360);
 
@@ -456,7 +456,7 @@ class _SeekBar extends ConsumerWidget {
         activeColor: const Color(0xFFFD4425),
         inactiveColor: const Color(0xFFC4C4C4),
         // value: positonInt / durationInt,
-        onChangeStart: (positon) => print('Start Sliding'),
+        onChangeStart: (positon) => debugPrint('Start Sliding'),
         // シークバーをドラッグして移動させたらStateProviderに反映させる
         onChanged: (position) =>
             ref.read(videoPositionSecondsProvider).state = position,

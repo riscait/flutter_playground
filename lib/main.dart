@@ -22,7 +22,7 @@ Future<void> main() async {
           await SharedPreferences.getInstance(),
         ),
       ],
-      child: App(),
+      child: const App(),
     ),
   );
 }

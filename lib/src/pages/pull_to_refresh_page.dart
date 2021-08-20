@@ -12,7 +12,7 @@ final _githubUserProvider =
     'api.github.com',
     'users/$username',
   ));
-  print(response.body);
+  debugPrint(response.body);
   return json.decode(response.body) as Map<String, Object?>;
 });
 

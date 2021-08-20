@@ -39,7 +39,7 @@ class _Cell extends ConsumerWidget {
   final SwipableListItem item;
 
   Future<bool?> confirmDismiss(DismissDirection direction) async {
-    print('confirmDismiss!!!');
+    debugPrint('confirmDismiss!!!');
     return true;
   }
 
@@ -47,7 +47,7 @@ class _Cell extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(swipableListPageControllerProvider.notifier);
     return Dismissible(
-      key: Key('${item.titleLabel}'),
+      key: Key(item.titleLabel),
       background: const DeletableBackground(),
       secondaryBackground: const DeletableBackground(),
       onDismissed: (direction) => controller.onDismissed(
@@ -57,7 +57,7 @@ class _Cell extends ConsumerWidget {
       ),
       confirmDismiss: confirmDismiss,
       child: ListTile(
-        title: Text('${item.titleLabel}'),
+        title: Text(item.titleLabel),
       ),
     );
   }
@@ -69,7 +69,7 @@ class DeletableBackground extends StatelessWidget {
   const DeletableBackground({
     Key? key,
     this.label = 'Delete',
-    this.margin = const EdgeInsets.all(0),
+    this.margin = EdgeInsets.zero,
     this.alignment = Alignment.centerLeft,
     this.borderRadius,
   }) : super(key: key);
