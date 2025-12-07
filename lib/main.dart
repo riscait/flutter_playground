@@ -1,28 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:collection/collection.dart';
-import 'src/app.dart';
-import 'src/top_level_providers/flavor.dart';
-import 'src/top_level_providers/shared_preferences.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  runApp(const MyApp());
+}
 
-  // ビルド時に指定したFlavorを取得（未指定の場合は development とする）
-  const flavorString = String.fromEnvironment('FLAVOR');
-  final flavor = Flavor.values.firstWhereOrNull((e) => e.key == flavorString) ??
-      Flavor.development;
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  runApp(
-    ProviderScope(
-      overrides: [
-        flavorProvider.overrideWithValue(flavor),
-        sharedPreferencesProvider.overrideWithValue(
-          await SharedPreferences.getInstance(),
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('Title'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: .center,
+          children: [
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
         ),
-      ],
-      child: App(),
-    ),
-  );
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
 }

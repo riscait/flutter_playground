@@ -126,3 +126,6 @@ app.*.map.json
 
 # fastlane
 report.xml
+
+# FVM Version Cache
+.fvm/
